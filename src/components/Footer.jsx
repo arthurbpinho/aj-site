@@ -94,9 +94,8 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-ink-100/10">
-        <div className="container-wide flex flex-col gap-2 py-6 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
+        <div className="container-wide py-6 text-center text-xs text-ink-400">
           <p>© {new Date().getFullYear()} Academia Junguiana. Todos os direitos reservados.</p>
-          <p>Feito com cuidado por um estudo que segue.</p>
         </div>
       </div>
     </footer>
