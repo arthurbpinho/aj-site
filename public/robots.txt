@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Atualizar URL ao migrar para domínio próprio
+Sitemap: https://arthurbpinho.github.io/aj-site/sitemap.xml
