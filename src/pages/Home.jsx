@@ -469,18 +469,21 @@ function Team() {
   const people = [
     {
       name: "Arthur Bernardes",
-      role: "Psicólogo clínico · Fundador da Academia",
+      role: "Divulgador Científico e idealizador da Academia Junguiana",
       image: "/midias/coordenadores/arthur.jpg",
+      bio: "Psicólogo Clínico e Supervisor graduado na PUC Minas. Co-fundador da Associação Allos e criador da Academia Junguiana. Coordenação de grupos de estudo, cursos, eventos e workshops online e presenciais em Psicologia Analítica há 5+ anos.",
     },
     {
       name: "João de Bragança",
-      role: "Psicólogo · PUC Minas",
+      role: "Psicólogo clínico e cofundador do projeto “Analítica Hoje”",
       image: "/midias/coordenadores/joao.png",
+      bio: "Psicólogo graduado pela PUC Minas, mestrando em Psicologia pela UFJF, formado em Psicologia Analítica pelo Instituto Dédalus, cofundador do projeto Analítica Hoje, membro do Laboratório de Pesquisa Caminhos Junguianos, Secretário Geral na Associação Allos.",
     },
     {
       name: "Henrique Barçante",
-      role: "Psicólogo junguiano · Pesquisador",
+      role: "Psicólogo junguiano e cofundador do projeto “Analítica Hoje”",
       image: "/midias/coordenadores/henrique.png",
+      bio: "Psicólogo formado pela PUC-MG, supervisor clínico, pesquisador do Caminhos Junguianos: Laboratório de Pesquisa e Pós-Graduação em Psicologia Analítica, professor na Academia Junguiana, pós-graduando do curso Teoria e Prática terapêutica de Nise da Silveira.",
     },
   ];
   return (
@@ -491,11 +494,11 @@ function Team() {
           title="A equipe da Academia."
           subtitle="Clínicos e pesquisadores comprometidos com o estudo continuado da Psicologia Analítica."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-stretch">
           {people.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.08}>
-              <div className="group rounded-2xl border border-ink-200 bg-paper p-8 text-center transition hover:-translate-y-1 hover:shadow-xl">
-                <div className="relative mx-auto h-28 w-28">
+              <article className="group relative flex h-full flex-col rounded-2xl border border-ink-200 bg-paper p-8 transition hover:-translate-y-1 hover:shadow-xl">
+                <div className="relative mx-auto h-28 w-28 shrink-0">
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-gold-500/40 via-forest-700/30 to-transparent blur-md opacity-0 transition group-hover:opacity-100" />
                   <img
                     src={asset(p.image)}
@@ -504,9 +507,17 @@ function Team() {
                     className="relative h-28 w-28 rounded-full object-cover ring-2 ring-paper shadow-md ring-offset-2 ring-offset-ink-100"
                   />
                 </div>
-                <h3 className="mt-6 text-xl text-forest-900">{p.name}</h3>
-                <p className="mt-2 text-sm text-ink-600">{p.role}</p>
-              </div>
+                <h3 className="mt-6 text-center font-serif text-2xl text-forest-900">
+                  {p.name}
+                </h3>
+                <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-gold-600">
+                  {p.role}
+                </p>
+                <div className="my-5 h-px bg-gradient-to-r from-transparent via-ink-200 to-transparent" />
+                <p className="text-sm leading-relaxed text-ink-700">
+                  {p.bio}
+                </p>
+              </article>
             </Reveal>
           ))}
         </div>
