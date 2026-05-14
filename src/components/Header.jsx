@@ -71,9 +71,14 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
-          <Link to="/#planos" className="btn-primary !py-2.5 !px-5">
+          <a
+            href="https://pay.hotmart.com/E100577277S?off=3op85xl5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary !py-2.5 !px-5"
+          >
             Assinar
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -117,9 +122,14 @@ export default function Header() {
                   </NavLink>
                 </motion.div>
               ))}
-              <Link to="/#planos" className="btn-primary mt-3 w-full">
+              <a
+                href="https://pay.hotmart.com/E100577277S?off=3op85xl5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary mt-3 w-full"
+              >
                 Assinar
-              </Link>
+              </a>
             </nav>
           </motion.div>
         )}
