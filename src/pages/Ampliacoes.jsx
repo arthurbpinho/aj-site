@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Headphones, Infinity as InfinityIcon } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import { ampliacoes, ampliacoesIntro } from "../data/ampliacoes.js";
+import { asset } from "../utils/asset.js";
 
 function Hero() {
   return (
@@ -56,27 +57,22 @@ function Hero() {
 function AmpliacaoCard({ item, index }) {
   return (
     <Reveal delay={index * 0.06}>
-      <article className="group relative grid gap-6 overflow-hidden rounded-3xl bg-paper p-6 ring-1 ring-ink-200 transition hover:-translate-y-1 hover:shadow-2xl md:grid-cols-[260px_1fr] md:p-8">
-        <div
-          className={`relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br ${item.accent}`}
-        >
+      <article className="group relative grid gap-6 overflow-hidden rounded-3xl bg-paper p-6 ring-1 ring-ink-200 transition hover:-translate-y-1 hover:shadow-2xl md:grid-cols-[300px_1fr] md:gap-8 md:p-8">
+        <div className="relative aspect-square overflow-hidden rounded-2xl bg-ink-200">
+          <img
+            src={asset(item.image)}
+            alt={item.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+          />
           <div
             aria-hidden
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 60%)",
-            }}
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/45 via-ink-950/0 to-transparent"
           />
-          <div className="absolute inset-0 grid place-items-center">
-            <span className="font-serif text-7xl text-ink-50/90 select-none">
-              {String(index + 1).padStart(2, "0")}
+          <div className="absolute left-4 top-4">
+            <span className="rounded-full bg-ink-950/55 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-ink-50 backdrop-blur">
+              Ampliação · {String(index + 1).padStart(2, "0")}
             </span>
-          </div>
-          <div className="absolute bottom-4 left-4 right-4 text-ink-50">
-            <p className="text-[10px] uppercase tracking-[0.3em] opacity-80">
-              Ampliação
-            </p>
           </div>
         </div>
 
