@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Play,
   ShieldCheck,
-  Sparkles,
   GraduationCap,
   Users,
   BookOpen,
@@ -39,7 +38,7 @@ function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-600"
           >
-            <Sparkles size={14} /> Psicologia Analítica
+            Psicologia Analítica
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 14 }}

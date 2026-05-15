@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { asset } from "../utils/asset.js";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Filter, ShoppingCart, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Filter, ShoppingCart } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import { courses } from "../data/courses.js";
 
@@ -27,7 +27,7 @@ function SubscriptionBanner() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gold-400"
           >
-            <Sparkles size={14} /> Assinatura da Academia
+            Assinatura da Academia
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
