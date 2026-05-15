@@ -30,7 +30,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.05 }}
           className="mt-4 max-w-3xl font-serif text-5xl md:text-6xl leading-tight"
         >
-          Encontros únicos, <span className="italic text-gold-400">gravações vitalícias</span>.
+          Encontros únicos,<br /><span className="italic text-gold-400">gravações avulsas</span>.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 14 }}
