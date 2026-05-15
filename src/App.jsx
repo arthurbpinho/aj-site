@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import WhatsAppFab from "./components/WhatsAppFab.jsx";
 import Home from "./pages/Home.jsx";
 import Ampliacoes from "./pages/Ampliacoes.jsx";
 import Blog from "./pages/Blog.jsx";
@@ -45,6 +46,7 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
+      <WhatsAppFab />
     </div>
   );
 }

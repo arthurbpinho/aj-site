@@ -74,6 +74,22 @@ function Hero() {
               Ver cursos e grupos
             </Link>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-3 text-sm text-ink-600"
+          >
+            Já é assinante?{" "}
+            <a
+              href="https://assinatura.academiajunguiana.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-forest-700 underline underline-offset-2 hover:text-forest-800"
+            >
+              clique aqui
+            </a>
+          </motion.p>
           <motion.ul
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
