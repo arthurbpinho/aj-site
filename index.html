@@ -39,7 +39,7 @@
       // Restores the deep URL that 404.html encoded into the query string,
       // so React Router sees the real path on load.
       (function () {
-        if (window.location.search.indexOf("?/") === 1) {
+        if (window.location.search[1] === "/") {
           var decoded =
             window.location.pathname.replace(/\/$/, "") +
             "/" +
