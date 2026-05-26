@@ -6,7 +6,7 @@ export const courses = [
     id: "biblia-e-psique",
     title: "A Bíblia e a Psique",
     subtitle: "Simbolismo da individuação no Antigo Testamento",
-    author: "Arthur Bernardes",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/bibliapsique.png",
     description:
       "Um estudo aprofundado sobre as narrativas do Antigo Testamento à luz da Psicologia Analítica, percorrendo símbolos, arquétipos e o processo de individuação que atravessa os textos sagrados.",
@@ -16,7 +16,7 @@ export const courses = [
   {
     id: "animus-anima",
     title: "Animus e Anima",
-    subtitle: "As figuras do contrassexual na psique",
+    subtitle: "Um estudo a partir da obra de Emma Jung",
     author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/animusanima.png",
     description:
@@ -28,7 +28,7 @@ export const courses = [
     id: "voz-e-tempo",
     title: "A Voz e o Tempo",
     subtitle: "Reflexões para Jovens Terapeutas",
-    author: "Arthur Bernardes",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/vozeotempo.png",
     description:
       "Reflexões essenciais para quem inicia a clínica junguiana: ética, presença, escuta e o lugar do terapeuta diante das demandas contemporâneas.",
@@ -39,7 +39,7 @@ export const courses = [
     id: "jung-literatura",
     title: "Carl Jung e Literatura",
     subtitle: "Quando a psique encontra a arte",
-    author: "Henrique Barçante",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/carljungliteratura.png",
     description:
       "Oito semanas mergulhando nos textos de Jung sobre a obra de arte poética, além de produções de Marie-Louise von Franz e Sonu Shamdasani, atravessando obras literárias fundamentais.",
@@ -50,7 +50,7 @@ export const courses = [
     id: "tipos-psicologicos",
     title: "Compreendendo os Tipos Psicológicos",
     subtitle: "Minicurso",
-    author: "João de Bragança",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/tipospsicologicos.png",
     description:
       "Introdução clara e rigorosa à tipologia junguiana: funções racionais e irracionais, atitudes extrovertida e introvertida, e o papel das funções na orientação da consciência.",
@@ -72,7 +72,7 @@ export const courses = [
     id: "como-entender-sonhos",
     title: "Como Entender os Sonhos",
     subtitle: "Grupo de Discussão",
-    author: "Arthur Bernardes",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/comoentenderossonhos.png",
     description:
       "Encontros de discussão sobre a abordagem junguiana dos sonhos: amplificação, contexto, séries oníricas e o uso clínico do material onírico.",
@@ -127,7 +127,7 @@ export const courses = [
     id: "numinoso-e-religiao",
     title: "O Numinoso e a Religião",
     subtitle: "Na Psicologia Analítica",
-    author: "Arthur Bernardes",
+    author: "Equipe Academia Junguiana",
     image: "/midias/gruposcursos/numinosoeareligiao.jpg",
     description:
       "Cinco módulos atravessando do pensamento de Mircea Eliade à elaboração junguiana da experiência religiosa: o sagrado, a função transcendente e os símbolos coletivos.",
