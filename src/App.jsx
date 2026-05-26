@@ -10,6 +10,7 @@ import Blog from "./pages/Blog.jsx";
 import Post from "./pages/Post.jsx";
 import Cursos from "./pages/Cursos.jsx";
 import Trilha from "./pages/Trilha.jsx";
+import Bioinsta from "./pages/Bioinsta.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function ScrollToTop() {
@@ -39,11 +40,12 @@ function MetaPixelPageView() {
 
 export default function App() {
   const location = useLocation();
+  const isStandalone = location.pathname === "/bioinsta";
   return (
     <div className="flex min-h-screen flex-col bg-ink-50">
       <ScrollToTop />
       <MetaPixelPageView />
-      <Header />
+      {!isStandalone && <Header />}
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
@@ -60,13 +62,14 @@ export default function App() {
               <Route path="/blog/:slug" element={<Post />} />
               <Route path="/cursos" element={<Cursos />} />
               <Route path="/trilha" element={<Trilha />} />
+              <Route path="/bioinsta" element={<Bioinsta />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>
         </AnimatePresence>
       </main>
-      <Footer />
-      <WhatsAppFab />
+      {!isStandalone && <Footer />}
+      {!isStandalone && <WhatsAppFab />}
     </div>
   );
 }

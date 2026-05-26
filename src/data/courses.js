@@ -14,6 +14,17 @@ export const courses = [
     tag: "Curso",
   },
   {
+    id: "animus-anima",
+    title: "Animus e Anima",
+    subtitle: "As figuras do contrassexual na psique",
+    author: "Equipe Academia Junguiana",
+    image: "/midias/gruposcursos/animusanima.png",
+    description:
+      "Grupo de estudos dedicado à leitura e discussão da obra de Emma Jung. O objetivo é compreender o animus e a anima enquanto ideias na psicologia analítica, analisando, a partir das leituras, sua fenomenologia e dinâmica nas projeções e no processo de individuação.",
+    link: "https://pay.hotmart.com/F105940240R",
+    tag: "Curso",
+  },
+  {
     id: "voz-e-tempo",
     title: "A Voz e o Tempo",
     subtitle: "Reflexões para Jovens Terapeutas",

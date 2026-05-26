@@ -49,7 +49,7 @@ export const trilhaStages = [
     title: "Encarando um desafio",
     description:
       "Para quem já tem repertório e quer encarar os textos mais densos e complexos da obra junguiana. Estudo exigente, simbólico e profundo.",
-    courses: resolve(["biblia-e-psique", "presente-futuro"]),
+    courses: resolve(["biblia-e-psique", "presente-futuro", "animus-anima"]),
   },
 ];
 
