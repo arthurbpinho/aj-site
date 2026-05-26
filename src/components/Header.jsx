@@ -6,6 +6,7 @@ import { asset } from "../utils/asset.js";
 
 const NAV = [
   { to: "/", label: "Início" },
+  { to: "/trilha", label: "Por onde começar?" },
   { to: "/ampliacoes", label: "Ampliações" },
   { to: "/blog", label: "Blog" },
   { to: "/cursos", label: "Nossos grupos e cursos" },

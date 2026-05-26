@@ -19,6 +19,7 @@ import {
 } from "../data/trilha.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
+const PLAN_SEMESTRAL = "https://pay.hotmart.com/E100577277S?off=1sc5zo29";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=ev0tv4qt";
 
 const ADICIONAIS_STATION = {
@@ -294,6 +295,14 @@ function SubscriptionCTA() {
               className="btn-gold"
             >
               Assinar mensal
+            </a>
+            <a
+              href={PLAN_SEMESTRAL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn bg-forest-700 text-ink-50 hover:bg-forest-600 hover:-translate-y-0.5"
+            >
+              Plano semestral
             </a>
             <a
               href={PLAN_ANNUAL}

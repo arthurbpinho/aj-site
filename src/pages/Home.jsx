@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { asset } from "../utils/asset.js";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Play,
   ShieldCheck,
@@ -10,14 +10,15 @@ import {
   BookOpen,
   Check,
   ArrowRight,
+  ChevronDown,
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
 import { posts } from "../data/posts.js";
-import { courses } from "../data/courses.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
+const PLAN_SEMESTRAL = "https://pay.hotmart.com/E100577277S?off=1sc5zo29";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=ev0tv4qt";
 
 function Hero() {
@@ -239,37 +240,111 @@ function Plans() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 md:gap-8">
+        <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-8 md:items-stretch">
           <PlanCard
             badge="Plano Mensal"
             price="R$ 50"
             period="/mês"
-            description="Acesso completo enquanto a assinatura estiver ativa. Cancele quando quiser."
+            description="Acesso completo enquanto a assinatura estiver ativa. Renovação automática até o cancelamento."
             features={[
               "Todos os cursos e grupos",
               "Encontros síncronos",
               "Comunidade exclusiva no WhatsApp",
-              "Novas turmas e conteúdos liberados continuamente",
+              "Cancele quando quiser",
             ]}
             cta="Assinar mensal"
             href={PLAN_MONTHLY}
             variant="default"
           />
           <PlanCard
+            badge="Plano Semestral"
+            price="R$ 270"
+            period="/semestre"
+            monthlyEquivalent="R$ 45/mês"
+            description="R$ 30 de desconto sobre o valor acumulado. Renovação automática até o cancelamento."
+            features={[
+              "Tudo do plano mensal",
+              "Economia de R$ 30 no semestre",
+              "Compromisso de seis meses",
+              "Pagamento à vista",
+            ]}
+            cta="Assinar semestral"
+            href={PLAN_SEMESTRAL}
+            variant="default"
+          />
+          <PlanCard
             badge="Plano Anual"
             price="R$ 500"
             period="/ano"
-            description="Pague 10 e leve 12 — equivale a aproximadamente R$ 42/mês."
+            monthlyEquivalent="R$ 42/mês"
+            description="R$ 100 de desconto sobre o valor acumulado. Renovação automática até o cancelamento."
             features={[
               "Tudo do plano mensal",
-              "R$ 100 de economia sobre o anual cheio",
+              "Economia de R$ 100 no ano",
               "Compromisso com o estudo de longo prazo",
-              "Prioridade em conteúdos exclusivos",
+              "Pagamento à vista",
             ]}
             cta="Assinar anual"
             href={PLAN_ANNUAL}
             variant="featured"
           />
+        </div>
+
+        <div className="mt-10 mx-auto max-w-2xl space-y-4">
+          <PlanDisclosure
+            label="É estudante de graduação?"
+            cta="Clique aqui para saber mais"
+            title="Desconto para Estudantes de Graduação"
+          >
+            <p>
+              Com preço especial para estudantes de graduação, a Assinatura
+              da Academia Junguiana oferece acesso completo a todos os nossos
+              conteúdos por <strong>R$ 40,00 / mês</strong>. A renovação é
+              automática até que ocorra o cancelamento.
+            </p>
+            <p className="mt-4">
+              <strong>Como solicitar seu preço promocional:</strong> envie seu
+              comprovante de matrícula ativo para o e-mail{" "}
+              <a
+                href="mailto:academiajunguiana@gmail.com"
+                className="text-gold-300 underline-offset-4 hover:underline"
+              >
+                academiajunguiana@gmail.com
+              </a>
+              . Após a validação dos dados pela nossa equipe, você receberá o
+              link exclusivo para assinar com o valor reduzido.
+            </p>
+          </PlanDisclosure>
+
+          <PlanDisclosure
+            label="Dúvidas administrativas?"
+            cta="Sobre certificados e cancelamento"
+            title="Sobre certificados e cancelamento"
+          >
+            <p>
+              Você pode solicitar certificados de cursos concluídos em{" "}
+              <a
+                href="mailto:academiajunguiana@gmail.com"
+                className="text-gold-300 underline-offset-4 hover:underline"
+              >
+                academiajunguiana@gmail.com
+              </a>
+              .
+            </p>
+            <p className="mt-4">
+              O cancelamento da assinatura também pode ser solicitado no mesmo
+              e-mail. Sua assinatura será cancelada em até 48h pela nossa
+              equipe, e a próxima mensalidade recorrente não será mais
+              cobrada.
+            </p>
+            <p className="mt-4">
+              O compromisso segue o plano escolhido: no <strong>mensal</strong>,
+              você pode cancelar em qualquer mês e o próximo mês não será
+              cobrado. No <strong>semestral</strong> e no{" "}
+              <strong>anual</strong>, vale o mesmo para o semestre ou para o
+              ano em curso.
+            </p>
+          </PlanDisclosure>
         </div>
 
         <p className="mt-10 text-center text-xs text-ink-400">
@@ -281,7 +356,7 @@ function Plans() {
   );
 }
 
-function PlanCard({ badge, price, period, description, features, cta, href, variant }) {
+function PlanCard({ badge, price, period, monthlyEquivalent, description, features, cta, href, variant }) {
   const featured = variant === "featured";
   return (
     <Reveal>
@@ -310,6 +385,22 @@ function PlanCard({ badge, price, period, description, features, cta, href, vari
             {period}
           </span>
         </div>
+        {monthlyEquivalent && (
+          <p
+            className={`mt-1 text-xs ${
+              featured ? "text-ink-500" : "text-ink-400"
+            }`}
+          >
+            equivalente a{" "}
+            <span
+              className={`font-medium ${
+                featured ? "text-forest-800" : "text-gold-300"
+              }`}
+            >
+              {monthlyEquivalent}
+            </span>
+          </p>
+        )}
         <p className={`mt-3 text-sm ${featured ? "text-ink-600" : "text-ink-300"}`}>
           {description}
         </p>
@@ -344,12 +435,56 @@ function PlanCard({ badge, price, period, description, features, cta, href, vari
   );
 }
 
+function PlanDisclosure({ label, cta, title, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="rounded-2xl bg-forest-900/50 ring-1 ring-ink-50/10 backdrop-blur">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm text-ink-100 transition hover:bg-forest-900/70 sm:px-6"
+      >
+        <span>
+          <span className="text-ink-200">{label}</span>{" "}
+          <span className="font-medium text-gold-300 underline-offset-4 hover:underline">
+            {cta}
+          </span>
+        </span>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 text-gold-300 transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-ink-50/10 px-5 py-5 text-sm leading-relaxed text-ink-200 sm:px-6">
+              <h4 className="mb-3 font-serif text-lg text-ink-50">{title}</h4>
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function HowItWorks() {
   const steps = [
     {
       n: "01",
       title: "Você assina",
-      text: "Escolha o plano mensal ou anual e finalize o checkout pela Hotmart.",
+      text: "Escolha o plano mensal, semestral ou anual e finalize o checkout pela Hotmart.",
     },
     {
       n: "02",
@@ -385,44 +520,170 @@ function HowItWorks() {
   );
 }
 
-function FeaturedCourses() {
-  const featured = courses.slice(0, 3);
+const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@academiajunguiana";
+const YOUTUBE_VIDEOS = [
+  {
+    id: "gtF7avgJZHk",
+    title: "O Alienista e a Psique — Machado de Assis e Nise da Silveira",
+  },
+  {
+    id: "tDwLkomOtw8",
+    title: "O Homem e Seus Símbolos — C. G. Jung e Von Franz · 1º Encontro",
+  },
+  {
+    id: "ieyco6ow9sY",
+    title: "O Numinoso e a Religião na Psicologia Analítica · 1ª Aula",
+  },
+  {
+    id: "4rtZh0ICa0s",
+    title: "A Voz e o Tempo — Reflexões para Jovens Terapeutas · 1º Encontro",
+  },
+];
+const INSTAGRAM_URL = "https://www.instagram.com/academiajunguiana/";
+const INSTAGRAM_POSTS = [
+  "https://www.instagram.com/p/DYfGGJKli4H/",
+  "https://www.instagram.com/p/DXwr_1blrA1/",
+  "https://www.instagram.com/p/DX69UzoFoZb/",
+  "https://www.instagram.com/p/DJXd-Edv2R1/",
+];
+
+function FeaturedLives() {
   return (
     <section className="bg-ink-100/60 py-24">
       <div className="container-wide">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionTitle
-            eyebrow="Em destaque"
-            title="Cursos para começar"
-            subtitle="Uma amostra do que está incluso na assinatura — ou disponível para compra avulsa."
+            eyebrow="Conteúdo gratuito"
+            title="Últimas lives no YouTube"
+            subtitle="Uma amostra do nosso trabalho — encontros abertos e gratuitos publicados no canal da Academia."
           />
-          <Link to="/cursos" className="btn-ghost">
-            Ver todos <ArrowRight size={16} />
-          </Link>
+          <a
+            href={YOUTUBE_CHANNEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
+            Ver o canal <ArrowRight size={16} />
+          </a>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {featured.map((c, i) => (
-            <Reveal key={c.id} delay={i * 0.08}>
-              <Link
-                to="/cursos"
-                className="group block overflow-hidden rounded-2xl bg-paper ring-1 ring-ink-200 transition hover:-translate-y-1 hover:shadow-xl"
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {YOUTUBE_VIDEOS.map((v, i) => (
+            <Reveal key={v.id} delay={i * 0.06}>
+              <a
+                href={`https://www.youtube.com/watch?v=${v.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-paper ring-1 ring-ink-200 transition hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-ink-200">
+                <div className="relative aspect-video overflow-hidden bg-ink-950">
                   <img
-                    src={asset(c.image)}
-                    alt={c.title}
+                    src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                    alt={v.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent transition group-hover:from-ink-950/40" />
+                  <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-paper/95 text-forest-900 shadow-lg transition group-hover:scale-110">
+                    <Play size={22} className="ml-0.5" fill="currentColor" />
+                  </span>
                 </div>
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-5">
                   <p className="text-[10px] uppercase tracking-[0.25em] text-gold-600">
-                    {c.tag}
+                    YouTube · Live
                   </p>
-                  <h3 className="mt-2 text-lg text-forest-900">{c.title}</h3>
-                  <p className="mt-1 text-xs text-ink-500">{c.author}</p>
+                  <h3 className="mt-2 text-sm leading-snug text-forest-900 line-clamp-3">
+                    {v.title}
+                  </h3>
                 </div>
-              </Link>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InstagramEmbed({ url }) {
+  return (
+    <blockquote
+      className="instagram-media"
+      data-instgrm-permalink={url}
+      data-instgrm-version="14"
+      style={{
+        background: "#FFF",
+        border: 0,
+        margin: 0,
+        maxWidth: "100%",
+        padding: 0,
+        width: "100%",
+      }}
+    >
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block p-8 text-center text-xs text-ink-500"
+      >
+        Ver post no Instagram
+      </a>
+    </blockquote>
+  );
+}
+
+function FeaturedSocial() {
+  useEffect(() => {
+    const SCRIPT_ID = "instagram-embed-script";
+    const processEmbeds = () => {
+      if (window.instgrm?.Embeds?.process) {
+        window.instgrm.Embeds.process();
+      }
+    };
+    if (document.getElementById(SCRIPT_ID)) {
+      processEmbeds();
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = SCRIPT_ID;
+    script.async = true;
+    script.src = "https://www.instagram.com/embed.js";
+    script.onload = processEmbeds;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-forest-50 via-paper to-forest-50 py-24">
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-60"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 15% 10%, rgba(200,156,68,0.22), transparent 45%), radial-gradient(circle at 85% 85%, rgba(68,112,73,0.20), transparent 50%)",
+        }}
+      />
+      <div className="container-wide relative">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionTitle
+            eyebrow="Nos acompanhe nas redes"
+            title="Últimos posts no Instagram"
+            subtitle="Conteúdos gratuitos que publicamos toda semana — para você conhecer mais sobre o nosso trabalho antes de assinar."
+          />
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
+            Seguir no Instagram <ArrowRight size={16} />
+          </a>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {INSTAGRAM_POSTS.map((url, i) => (
+            <Reveal key={url} delay={i * 0.06}>
+              <div className="overflow-hidden rounded-2xl bg-paper shadow-lg ring-1 ring-forest-200/60 transition hover:-translate-y-1 hover:shadow-2xl">
+                <InstagramEmbed url={url} />
+              </div>
             </Reveal>
           ))}
         </div>
@@ -488,54 +749,91 @@ function Team() {
       role: "Divulgador Científico e idealizador da Academia Junguiana",
       image: "/midias/coordenadores/arthur.jpg",
       bio: "Psicólogo Clínico e Supervisor graduado na PUC Minas. Co-fundador da Associação Allos e criador da Academia Junguiana. Coordenação de grupos de estudo, cursos, eventos e workshops online e presenciais em Psicologia Analítica há 5+ anos.",
+      link: "https://arthurbernardespsi.com.br/",
     },
     {
       name: "João de Bragança",
       role: "Psicólogo clínico e cofundador do projeto “Analítica Hoje”",
       image: "/midias/coordenadores/joao.png",
       bio: "Psicólogo graduado pela PUC Minas, mestrando em Psicologia pela UFJF, formado em Psicologia Analítica pelo Instituto Dédalus, cofundador do projeto Analítica Hoje, membro do Laboratório de Pesquisa Caminhos Junguianos, Secretário Geral na Associação Allos.",
+      link: "https://www.instagram.com/joaodebraganca",
     },
     {
       name: "Henrique Barçante",
       role: "Psicólogo junguiano e cofundador do projeto “Analítica Hoje”",
       image: "/midias/coordenadores/henrique.png",
       bio: "Psicólogo formado pela PUC-MG, supervisor clínico, pesquisador do Caminhos Junguianos: Laboratório de Pesquisa e Pós-Graduação em Psicologia Analítica, professor na Academia Junguiana, pós-graduando do curso Teoria e Prática terapêutica de Nise da Silveira.",
+      link: "https://www.instagram.com/prosa_psiquica/",
     },
   ];
   return (
     <section className="bg-ink-100/60 py-24">
       <div className="container-wide">
-        <SectionTitle
-          eyebrow="Quem está por trás"
-          title="A equipe da Academia."
-          subtitle="Clínicos e pesquisadores comprometidos com o estudo continuado da Psicologia Analítica."
-        />
+        <div className="flex flex-wrap items-start justify-between gap-6">
+          <div className="flex-1 min-w-[260px]">
+            <SectionTitle
+              eyebrow="Quem está por trás"
+              title="A equipe da Academia."
+              subtitle="Clínicos e pesquisadores comprometidos com o estudo continuado da Psicologia Analítica."
+            />
+          </div>
+          <a
+            href="https://www.instagram.com/analiticahoje/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full border border-ink-200 bg-paper px-4 py-2 shadow-sm transition hover:-translate-y-0.5 hover:border-forest-300 hover:shadow-md"
+          >
+            <img
+              src={asset("/midias/analiticahoje.jpg")}
+              alt="Analítica Hoje"
+              loading="lazy"
+              className="h-9 w-9 rounded-full object-cover ring-1 ring-ink-200"
+            />
+            <span className="text-sm leading-tight text-ink-700">
+              Somos parceiros do{" "}
+              <span className="font-medium text-forest-800 group-hover:underline underline-offset-4">
+                @analiticahoje
+              </span>
+            </span>
+          </a>
+        </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-stretch">
-          {people.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08}>
-              <article className="group relative flex h-full flex-col rounded-2xl border border-ink-200 bg-paper p-8 transition hover:-translate-y-1 hover:shadow-xl">
-                <div className="relative mx-auto h-28 w-28 shrink-0">
-                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-gold-500/40 via-forest-700/30 to-transparent blur-md opacity-0 transition group-hover:opacity-100" />
-                  <img
-                    src={asset(p.image)}
-                    alt={p.name}
-                    loading="lazy"
-                    className="relative h-28 w-28 rounded-full object-cover ring-2 ring-paper shadow-md ring-offset-2 ring-offset-ink-100"
-                  />
-                </div>
-                <h3 className="mt-6 text-center font-serif text-2xl text-forest-900">
-                  {p.name}
-                </h3>
-                <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-gold-600">
-                  {p.role}
-                </p>
-                <div className="my-5 h-px bg-gradient-to-r from-transparent via-ink-200 to-transparent" />
-                <p className="text-sm leading-relaxed text-ink-700">
-                  {p.bio}
-                </p>
-              </article>
-            </Reveal>
-          ))}
+          {people.map((p, i) => {
+            const firstName = p.name.split(" ")[0];
+            return (
+              <Reveal key={p.name} delay={i * 0.08}>
+                <article className="group relative flex h-full flex-col rounded-2xl border border-ink-200 bg-paper p-8 transition hover:-translate-y-1 hover:shadow-xl">
+                  <div className="relative mx-auto h-28 w-28 shrink-0">
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-gold-500/40 via-forest-700/30 to-transparent blur-md opacity-0 transition group-hover:opacity-100" />
+                    <img
+                      src={asset(p.image)}
+                      alt={p.name}
+                      loading="lazy"
+                      className="relative h-28 w-28 rounded-full object-cover ring-2 ring-paper shadow-md ring-offset-2 ring-offset-ink-100"
+                    />
+                  </div>
+                  <h3 className="mt-6 text-center font-serif text-2xl text-forest-900">
+                    {p.name}
+                  </h3>
+                  <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-gold-600">
+                    {p.role}
+                  </p>
+                  <div className="my-5 h-px bg-gradient-to-r from-transparent via-ink-200 to-transparent" />
+                  <p className="text-sm leading-relaxed text-ink-700">
+                    {p.bio}
+                  </p>
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-1 self-start text-xs uppercase tracking-[0.2em] text-forest-700 transition hover:text-gold-600"
+                  >
+                    Conheça mais sobre {firstName} <ArrowRight size={14} />
+                  </a>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -559,9 +857,10 @@ export default function Home() {
       <section className="container-wide pb-24">
         <TrilhaBanner />
       </section>
-      <FeaturedCourses />
-      <FeaturedPosts />
       <Team />
+      <FeaturedPosts />
+      <FeaturedLives />
+      <FeaturedSocial />
     </>
   );
 }
