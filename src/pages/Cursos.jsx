@@ -3,6 +3,7 @@ import { asset } from "../utils/asset.js";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Filter, ShoppingCart } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
+import TrilhaBanner from "../components/TrilhaBanner.jsx";
 import { courses } from "../data/courses.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
@@ -172,6 +173,8 @@ export default function Cursos() {
       <SubscriptionBanner />
 
       <section className="container-wide py-20">
+        <TrilhaBanner className="mb-14" />
+
         <div className="flex flex-wrap items-end justify-between gap-6">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-gold-600">

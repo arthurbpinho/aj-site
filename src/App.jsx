@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppFab from "./components/WhatsAppFab.jsx";
@@ -9,6 +9,7 @@ import Ampliacoes from "./pages/Ampliacoes.jsx";
 import Blog from "./pages/Blog.jsx";
 import Post from "./pages/Post.jsx";
 import Cursos from "./pages/Cursos.jsx";
+import Trilha from "./pages/Trilha.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function ScrollToTop() {
@@ -19,11 +20,29 @@ function ScrollToTop() {
   return null;
 }
 
+// Dispara PageView do Meta Pixel a cada troca de rota do SPA.
+// O PageView inicial já sai no index.html; aqui pulamos o primeiro mount pra não contar duas vezes.
+function MetaPixelPageView() {
+  const { pathname } = useLocation();
+  const firstLoad = useRef(true);
+  useEffect(() => {
+    if (firstLoad.current) {
+      firstLoad.current = false;
+      return;
+    }
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "PageView");
+    }
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   const location = useLocation();
   return (
     <div className="flex min-h-screen flex-col bg-ink-50">
       <ScrollToTop />
+      <MetaPixelPageView />
       <Header />
       <main className="flex-1">
         <AnimatePresence mode="wait">
@@ -40,6 +59,7 @@ export default function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<Post />} />
               <Route path="/cursos" element={<Cursos />} />
+              <Route path="/trilha" element={<Trilha />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>

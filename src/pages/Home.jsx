@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
+import TrilhaBanner from "../components/TrilhaBanner.jsx";
 import { posts } from "../data/posts.js";
 import { courses } from "../data/courses.js";
 
@@ -555,6 +556,9 @@ export default function Home() {
       <Pillars />
       <Plans />
       <HowItWorks />
+      <section className="container-wide pb-24">
+        <TrilhaBanner />
+      </section>
       <FeaturedCourses />
       <FeaturedPosts />
       <Team />
