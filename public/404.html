@@ -8,7 +8,7 @@
       // Redirects any deep URL to the app root, preserving the path/query/hash
       // so React Router can render the correct route on load.
       (function () {
-        var segmentCount = 1; // 1 for project pages (/<repo>/), 0 for user/apex pages
+        var segmentCount = 0; // 0 for apex/custom domain (academiajunguiana.com), 1 for /<repo>/ project pages
         var l = window.location;
         l.replace(
           l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") +
