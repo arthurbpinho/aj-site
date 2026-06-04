@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { asset } from "../utils/asset.js";
@@ -15,7 +15,7 @@ const NAV = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const closeMenu = () => setOpen(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -23,8 +23,6 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => setOpen(false), [location.pathname]);
 
   return (
     <header
@@ -37,6 +35,7 @@ export default function Header() {
       <div className="container-wide flex items-center justify-between py-4">
         <Link
           to="/"
+          onClick={closeMenu}
           className="group flex items-center gap-3"
           aria-label="Academia Junguiana"
         >
@@ -113,6 +112,7 @@ export default function Header() {
                   <NavLink
                     to={item.to}
                     end={item.to === "/"}
+                    onClick={closeMenu}
                     className={({ isActive }) =>
                       `block py-3 px-2 text-base font-medium border-b border-ink-200/60 last:border-0 transition-colors ${
                         isActive ? "text-forest-800" : "text-ink-800 hover:text-forest-700"
@@ -127,6 +127,7 @@ export default function Header() {
                 href="https://pay.hotmart.com/E100577277S?off=3op85xl5"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={closeMenu}
                 className="btn-primary mt-3 w-full"
               >
                 Assinar

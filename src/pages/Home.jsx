@@ -15,7 +15,9 @@ import {
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
+import CoordinatorCard from "../components/CoordinatorCard.jsx";
 import { posts } from "../data/posts.js";
+import { coordinatorList } from "../data/coordinators.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
 const PLAN_SEMESTRAL = "https://pay.hotmart.com/E100577277S?off=1sc5zo29";
@@ -539,13 +541,6 @@ const YOUTUBE_VIDEOS = [
     title: "A Voz e o Tempo — Reflexões para Jovens Terapeutas · 1º Encontro",
   },
 ];
-const INSTAGRAM_URL = "https://www.instagram.com/academiajunguiana/";
-const INSTAGRAM_POSTS = [
-  "https://www.instagram.com/p/DYfGGJKli4H/",
-  "https://www.instagram.com/p/DXwr_1blrA1/",
-  "https://www.instagram.com/p/DX69UzoFoZb/",
-  "https://www.instagram.com/p/DJXd-Edv2R1/",
-];
 
 function FeaturedLives() {
   return (
@@ -605,93 +600,6 @@ function FeaturedLives() {
   );
 }
 
-function InstagramEmbed({ url }) {
-  return (
-    <blockquote
-      className="instagram-media"
-      data-instgrm-permalink={url}
-      data-instgrm-version="14"
-      style={{
-        background: "#FFF",
-        border: 0,
-        margin: 0,
-        maxWidth: "100%",
-        padding: 0,
-        width: "100%",
-      }}
-    >
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block p-8 text-center text-xs text-ink-500"
-      >
-        Ver post no Instagram
-      </a>
-    </blockquote>
-  );
-}
-
-function FeaturedSocial() {
-  useEffect(() => {
-    const SCRIPT_ID = "instagram-embed-script";
-    const processEmbeds = () => {
-      if (window.instgrm?.Embeds?.process) {
-        window.instgrm.Embeds.process();
-      }
-    };
-    if (document.getElementById(SCRIPT_ID)) {
-      processEmbeds();
-      return;
-    }
-    const script = document.createElement("script");
-    script.id = SCRIPT_ID;
-    script.async = true;
-    script.src = "https://www.instagram.com/embed.js";
-    script.onload = processEmbeds;
-    document.body.appendChild(script);
-  }, []);
-
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-forest-50 via-paper to-forest-50 py-24">
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-60"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 10%, rgba(200,156,68,0.22), transparent 45%), radial-gradient(circle at 85% 85%, rgba(68,112,73,0.20), transparent 50%)",
-        }}
-      />
-      <div className="container-wide relative">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionTitle
-            eyebrow="Nos acompanhe nas redes"
-            title="Últimos posts no Instagram"
-            subtitle="Conteúdos gratuitos que publicamos toda semana — para você conhecer mais sobre o nosso trabalho antes de assinar."
-          />
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
-          >
-            Seguir no Instagram <ArrowRight size={16} />
-          </a>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {INSTAGRAM_POSTS.map((url, i) => (
-            <Reveal key={url} delay={i * 0.06}>
-              <div className="overflow-hidden rounded-2xl bg-paper shadow-lg ring-1 ring-forest-200/60 transition hover:-translate-y-1 hover:shadow-2xl">
-                <InstagramEmbed url={url} />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function FeaturedPosts() {
   return (
     <section className="container-wide py-24">
@@ -743,29 +651,6 @@ function FeaturedPosts() {
 }
 
 function Team() {
-  const people = [
-    {
-      name: "Arthur Bernardes",
-      role: "Divulgador Científico e idealizador da Academia Junguiana",
-      image: "/midias/coordenadores/arthur.jpg",
-      bio: "Psicólogo Clínico e Supervisor graduado na PUC Minas. Co-fundador da Associação Allos e criador da Academia Junguiana. Coordenação de grupos de estudo, cursos, eventos e workshops online e presenciais em Psicologia Analítica há 5+ anos.",
-      link: "https://arthurbernardespsi.com.br/",
-    },
-    {
-      name: "João de Bragança",
-      role: "Psicólogo clínico e cofundador do projeto “Analítica Hoje”",
-      image: "/midias/coordenadores/joao.png",
-      bio: "Psicólogo graduado pela PUC Minas, mestrando em Psicologia pela UFJF, formado em Psicologia Analítica pelo Instituto Dédalus, cofundador do projeto Analítica Hoje, membro do Laboratório de Pesquisa Caminhos Junguianos, Secretário Geral na Associação Allos.",
-      link: "https://www.instagram.com/joaodebraganca",
-    },
-    {
-      name: "Henrique Barçante",
-      role: "Psicólogo junguiano e cofundador do projeto “Analítica Hoje”",
-      image: "/midias/coordenadores/henrique.png",
-      bio: "Psicólogo formado pela PUC-MG, supervisor clínico, pesquisador do Caminhos Junguianos: Laboratório de Pesquisa e Pós-Graduação em Psicologia Analítica, professor na Academia Junguiana, pós-graduando do curso Teoria e Prática terapêutica de Nise da Silveira.",
-      link: "https://www.instagram.com/prosa_psiquica/",
-    },
-  ];
   return (
     <section className="bg-ink-100/60 py-24">
       <div className="container-wide">
@@ -798,42 +683,11 @@ function Team() {
           </a>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-stretch">
-          {people.map((p, i) => {
-            const firstName = p.name.split(" ")[0];
-            return (
-              <Reveal key={p.name} delay={i * 0.08}>
-                <article className="group relative flex h-full flex-col rounded-2xl border border-ink-200 bg-paper p-8 transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative mx-auto h-28 w-28 shrink-0">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-gold-500/40 via-forest-700/30 to-transparent blur-md opacity-0 transition group-hover:opacity-100" />
-                    <img
-                      src={asset(p.image)}
-                      alt={p.name}
-                      loading="lazy"
-                      className="relative h-28 w-28 rounded-full object-cover ring-2 ring-paper shadow-md ring-offset-2 ring-offset-ink-100"
-                    />
-                  </div>
-                  <h3 className="mt-6 text-center font-serif text-2xl text-forest-900">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2 text-center text-xs uppercase tracking-[0.2em] text-gold-600">
-                    {p.role}
-                  </p>
-                  <div className="my-5 h-px bg-gradient-to-r from-transparent via-ink-200 to-transparent" />
-                  <p className="text-sm leading-relaxed text-ink-700">
-                    {p.bio}
-                  </p>
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-1 self-start text-xs uppercase tracking-[0.2em] text-forest-700 transition hover:text-gold-600"
-                  >
-                    Conheça mais sobre {firstName} <ArrowRight size={14} />
-                  </a>
-                </article>
-              </Reveal>
-            );
-          })}
+          {coordinatorList.map((p, i) => (
+            <Reveal key={p.id} delay={i * 0.08}>
+              <CoordinatorCard person={p} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -860,7 +714,6 @@ export default function Home() {
       <Team />
       <FeaturedPosts />
       <FeaturedLives />
-      <FeaturedSocial />
     </>
   );
 }

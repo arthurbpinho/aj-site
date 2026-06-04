@@ -1,10 +1,14 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { asset } from "../utils/asset.js";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Filter, ShoppingCart } from "lucide-react";
+import { ArrowRight, Check, Clock, Filter } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
+import SectionTitle from "../components/SectionTitle.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
+import CoordinatorCard from "../components/CoordinatorCard.jsx";
 import { courses } from "../data/courses.js";
+import { coordinatorList } from "../data/coordinators.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=ev0tv4qt";
@@ -139,20 +143,15 @@ function CourseCard({ course, index }) {
           {course.subtitle && (
             <p className="mt-1 text-sm italic text-ink-500">{course.subtitle}</p>
           )}
-          <p className="mt-1 text-xs uppercase tracking-[0.2em] text-gold-600">
-            {course.author}
+          <p className="mt-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-gold-600">
+            <Clock size={12} /> {course.format} · {course.duration}
           </p>
           <p className="mt-3 text-sm text-ink-600 leading-relaxed">
             {course.description}
           </p>
-          <a
-            href={course.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary mt-6"
-          >
-            <ShoppingCart size={16} /> Comprar avulso
-          </a>
+          <Link to={`/cursos/${course.id}`} className="btn-primary mt-6">
+            Conheça mais <ArrowRight size={16} />
+          </Link>
         </div>
       </article>
     </Reveal>
@@ -211,6 +210,24 @@ export default function Cursos() {
           {visible.map((c, i) => (
             <CourseCard key={c.id} course={c} index={i} />
           ))}
+        </div>
+      </section>
+
+      <section className="bg-ink-100/60 py-20">
+        <div className="container-wide">
+          <SectionTitle
+            align="center"
+            eyebrow="Quem coordena"
+            title="Os coordenadores dos nossos grupos e cursos."
+            subtitle="Clínicos e pesquisadores que conduzem os estudos da Academia. Em cada página de curso você encontra a coordenação específica daquele grupo."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3 md:items-stretch">
+            {coordinatorList.map((person, i) => (
+              <Reveal key={person.id} delay={i * 0.08}>
+                <CoordinatorCard person={person} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

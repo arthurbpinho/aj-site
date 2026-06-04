@@ -7,7 +7,6 @@ import {
   Layers,
   Mountain,
   Headphones,
-  ShoppingCart,
   BookMarked,
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
@@ -128,14 +127,12 @@ function TrailCourseCard({ course }) {
           {course.description}
         </p>
         <div className="mt-3 flex flex-col gap-2 pt-1 sm:flex-row">
-          <a
-            href={course.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={`/cursos/${course.id}`}
             className="inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-forest-800 px-3 py-2 text-[11px] font-medium text-ink-50 transition hover:bg-forest-700 sm:w-auto sm:flex-1"
           >
-            <ShoppingCart size={12} /> Comprar avulso
-          </a>
+            Conheça mais <ArrowRight size={12} />
+          </Link>
           <a
             href={PLAN_MONTHLY}
             target="_blank"

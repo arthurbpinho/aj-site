@@ -9,6 +9,7 @@ import Ampliacoes from "./pages/Ampliacoes.jsx";
 import Blog from "./pages/Blog.jsx";
 import Post from "./pages/Post.jsx";
 import Cursos from "./pages/Cursos.jsx";
+import CursoDetalhe from "./pages/CursoDetalhe.jsx";
 import Trilha from "./pages/Trilha.jsx";
 import Bioinsta from "./pages/Bioinsta.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -61,6 +62,7 @@ export default function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<Post />} />
               <Route path="/cursos" element={<Cursos />} />
+              <Route path="/cursos/:slug" element={<CursoDetalhe />} />
               <Route path="/trilha" element={<Trilha />} />
               <Route path="/bioinsta" element={<Bioinsta />} />
               <Route path="*" element={<NotFound />} />
