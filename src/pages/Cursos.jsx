@@ -169,8 +169,6 @@ export default function Cursos() {
 
   return (
     <>
-      <SubscriptionBanner />
-
       <section className="container-wide py-20">
         <TrilhaBanner className="mb-14" />
 
@@ -180,11 +178,11 @@ export default function Cursos() {
               Catálogo completo
             </p>
             <h2 className="mt-3 font-serif text-3xl md:text-4xl text-forest-900 leading-tight">
-              Ou compre cursos avulsos.
+              Conheça nossos cursos e grupos.
             </h2>
             <p className="mt-3 max-w-2xl text-base text-ink-600 leading-relaxed">
-              Cada um dos cursos abaixo também pode ser adquirido individualmente.
-              Mas, na assinatura, todos eles estão incluídos.
+              Cada um dos cursos abaixo pode ser adquirido individualmente — ou
+              acessado por inteiro com a assinatura da Academia, logo abaixo.
             </p>
           </Reveal>
 
@@ -212,6 +210,8 @@ export default function Cursos() {
           ))}
         </div>
       </section>
+
+      <SubscriptionBanner />
 
       <section className="bg-ink-100/60 py-20">
         <div className="container-wide">
