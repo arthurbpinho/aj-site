@@ -262,7 +262,7 @@ export default function CursoDetalhe() {
         {course.modules && (
           <Reveal className="mb-14">
             <p className="text-xs uppercase tracking-[0.3em] text-gold-600">
-              O que você vai estudar
+              O que você vai aprender
             </p>
             <ul className="mt-5 space-y-3">
               {course.modules.map((m) => (
