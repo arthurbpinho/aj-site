@@ -31,12 +31,13 @@ function SubscriptionHint({ tone = "light" }) {
       href={PLAN_MONTHLY}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center gap-1 text-sm transition ${base}`}
+      className={`group block max-w-sm text-sm leading-relaxed transition ${base}`}
     >
       Quer ter acesso a todos os grupos? Assine mensalmente clicando{" "}
       <span className="font-semibold text-gold-500 underline decoration-gold-500/50 underline-offset-2 group-hover:decoration-gold-400">
         aqui
       </span>
+      .
     </a>
   );
 }
@@ -277,6 +278,12 @@ export default function CursoDetalhe() {
                 </li>
               ))}
             </ul>
+            {course.modulesNote && (
+              <Paragraphs
+                items={course.modulesNote}
+                className="mt-6 text-base text-ink-700"
+              />
+            )}
           </Reveal>
         )}
       </article>

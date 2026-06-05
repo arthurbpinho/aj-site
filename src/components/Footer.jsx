@@ -94,8 +94,19 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-ink-100/10">
-        <div className="container-wide py-6 text-center text-xs text-ink-400">
+        <div className="container-wide flex flex-col items-center justify-between gap-2 py-6 text-center text-xs text-ink-400 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Academia Junguiana. Todos os direitos reservados.</p>
+          <p>
+            Site criado por{" "}
+            <a
+              href="https://instagram.com/zygia_digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-ink-200 underline decoration-ink-100/30 underline-offset-2 transition hover:text-gold-400 hover:decoration-gold-400"
+            >
+              Zygia Digital
+            </a>
+          </p>
         </div>
       </div>
     </footer>

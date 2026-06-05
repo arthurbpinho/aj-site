@@ -357,7 +357,6 @@ export const courses = [
       "“Rasguem os manuais de psiquiatria! Leiam Machado de Assis.”",
       "Nise da Silveira afirmava ser proveitoso trocar certos tratados de psiquiatria pelos livros do maior escritor brasileiro de todos os tempos. É seguindo essa ideia de Nise que montamos este curso, cuja premissa foi discutir todos os contos de Machado de Assis que ela comentou ao longo da vida.",
       "Partimos de uma breve apresentação das biografias de Nise e de Machado de Assis, mostrando como seus textos e os temas que trabalharam se conectam — ambos preocupados em dar vida e voz às histórias dos subúrbios e aos dramas humanos. Em seguida, cada conto foi minuciosamente trabalhado, e finalizamos com a discussão de um artigo brasileiro que aprofunda a relação entre a obra machadiana e a niseana.",
-      "A partir da perspectiva junguiana e niseana, você aprenderá a aplicar os principais conceitos de Jung aos contos de Machado de Assis comentados por Nise da Silveira. Compreenderá, ainda, a forma única como a abordagem de C. G. Jung lida com o campo das artes e das produções literárias, além dos principais princípios e perspectivas que Nise aplicou em sua prática.",
     ],
     modules: [
       "Nise da Silveira, Machado de Assis, Psicologia Analítica e Arte",
@@ -367,6 +366,9 @@ export const courses = [
       "A Cartomante",
       "A Igreja do Diabo",
       "Machado de Assis e sua leitora Nise da Silveira",
+    ],
+    modulesNote: [
+      "A partir da perspectiva junguiana e niseana, você aprenderá a aplicar os principais conceitos de Jung aos contos de Machado de Assis comentados por Nise da Silveira. Compreenderá, ainda, a forma única como a abordagem de C. G. Jung lida com o campo das artes e das produções literárias, além dos principais princípios e perspectivas que Nise aplicou em sua prática.",
     ],
   },
   {
