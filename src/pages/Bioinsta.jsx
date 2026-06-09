@@ -23,6 +23,7 @@ function YoutubeIcon({ size = 20 }) {
 
 const SITE_URL = "https://academiajunguiana.com/";
 const SUBSCRIBERS_URL = "https://assinatura.academiajunguiana.com.br/";
+const LIVE_URL = "https://www.youtube.com/watch?v=F-tHMkAxEuo";
 const INSTAGRAM_URL = "https://www.instagram.com/academiajunguiana/";
 const YOUTUBE_URL = "https://www.youtube.com/@academiajunguiana";
 
@@ -188,6 +189,24 @@ export default function Bioinsta() {
               Assinar agora <ArrowRight size={14} />
             </span>
           </span>
+        </a>
+
+        <a
+          href={LIVE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-4 flex items-center gap-3 rounded-2xl bg-paper/10 px-5 py-3.5 ring-1 ring-ink-50/15 backdrop-blur transition hover:-translate-y-0.5 hover:bg-paper/15"
+        >
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ff0000] text-paper">
+            <YoutubeIcon size={18} />
+          </span>
+          <span className="flex-1 text-sm font-medium text-ink-50">
+            Participe da nossa live todas as terças!
+          </span>
+          <ArrowRight
+            size={16}
+            className="shrink-0 text-gold-400 transition-transform group-hover:translate-x-1"
+          />
         </a>
 
         <div className="mt-6 space-y-3">
