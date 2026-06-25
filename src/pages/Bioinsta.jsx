@@ -23,7 +23,7 @@ function YoutubeIcon({ size = 20 }) {
 
 const SITE_URL = "https://academiajunguiana.com/";
 const SUBSCRIBERS_URL = "https://assinatura.academiajunguiana.com.br/";
-const LIVE_URL = "https://www.youtube.com/watch?v=F-tHMkAxEuo";
+const LIVE_URL = "https://www.youtube.com/@academiajunguiana/streams";
 const INSTAGRAM_URL = "https://www.instagram.com/academiajunguiana/";
 const YOUTUBE_URL = "https://www.youtube.com/@academiajunguiana";
 
@@ -45,12 +45,18 @@ const PODCAST_LINKS = [
   },
 ];
 
-function LinkCard({ icon: Icon, title, subtitle, onClick, href }) {
+function LinkCard({ icon: Icon, image, title, subtitle, onClick, href }) {
   const inner = (
     <>
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-forest-800 text-gold-400 ring-1 ring-forest-700">
-        <Icon size={18} />
-      </span>
+      {image ? (
+        <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full ring-1 ring-forest-700">
+          <img src={image} alt="" className="h-full w-full object-cover" />
+        </span>
+      ) : (
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-forest-800 text-gold-400 ring-1 ring-forest-700">
+          <Icon size={18} />
+        </span>
+      )}
       <span className="flex flex-1 flex-col text-left">
         <span className="text-base font-medium text-forest-950 leading-tight">
           {title}
@@ -210,6 +216,12 @@ export default function Bioinsta() {
         </a>
 
         <div className="mt-6 space-y-3">
+          <LinkCard
+            image={asset("/midias/grupobio.jpeg")}
+            title="Grupo de WhatsApp da Bio"
+            subtitle="Entre no nosso grupo gratuito"
+            href="https://chat.whatsapp.com/FoS5h4lpnvRJPrl0Uyei73"
+          />
           <LinkCard
             icon={Lock}
             title="Animus e Anima"
