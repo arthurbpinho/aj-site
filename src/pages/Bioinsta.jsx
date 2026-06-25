@@ -220,7 +220,7 @@ export default function Bioinsta() {
             image={asset("/midias/grupobio.jpeg")}
             title="Sentimentos, sonhos, sombra e transformações"
             subtitle="Grupo no WhatsApp para ENCONTRO GRATUITO"
-            href="https://chat.whatsapp.com/FoS5h4lpnvRJPrl0Uyei73"
+            href="https://chat.whatsapp.com/DdLYkKwXJRxDKctRKatVy5"
           />
           <LinkCard
             icon={Lock}
