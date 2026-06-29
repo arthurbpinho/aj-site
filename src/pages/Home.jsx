@@ -11,6 +11,7 @@ import {
   Check,
   ArrowRight,
   ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
@@ -20,7 +21,6 @@ import { posts } from "../data/posts.js";
 import { coordinatorList } from "../data/coordinators.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
-const PLAN_SEMESTRAL = "https://pay.hotmart.com/E100577277S?off=1sc5zo29";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
 
 function Hero() {
@@ -242,7 +242,7 @@ function Plans() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-8 md:items-stretch">
+        <div className="mt-14 mx-auto grid max-w-5xl gap-6 md:grid-cols-2 md:gap-10 md:items-stretch">
           <PlanCard
             badge="Plano Mensal"
             price="R$ 50"
@@ -259,32 +259,17 @@ function Plans() {
             variant="default"
           />
           <PlanCard
-            badge="Plano Semestral"
-            price="R$ 270"
-            period="/semestre"
-            monthlyEquivalent="R$ 45/mês"
-            description="R$ 30 de desconto sobre o valor acumulado. Renovação automática até o cancelamento."
-            features={[
-              "Tudo do plano mensal",
-              "Economia de R$ 30 no semestre",
-              "Compromisso de seis meses",
-              "Pagamento à vista",
-            ]}
-            cta="Assinar semestral"
-            href={PLAN_SEMESTRAL}
-            variant="default"
-          />
-          <PlanCard
             badge="Plano Anual"
             price="R$ 500"
             period="/ano"
             monthlyEquivalent="R$ 42/mês"
-            description="R$ 100 de desconto sobre o valor acumulado. Renovação automática até o cancelamento."
+            highlight="R$ 100 de desconto"
+            description="R$ 100 de desconto à vista, ou parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
             features={[
               "Tudo do plano mensal",
-              "Economia de R$ 100 no ano",
+              "R$ 500 à vista, com R$ 100 de desconto",
+              "Ou em até 9x, conforme condições de parcelamento",
               "Compromisso com o estudo de longo prazo",
-              "Pagamento à vista",
             ]}
             cta="Assinar anual"
             href={PLAN_ANNUAL}
@@ -342,8 +327,7 @@ function Plans() {
             <p className="mt-4">
               O compromisso segue o plano escolhido: no <strong>mensal</strong>,
               você pode cancelar em qualquer mês e o próximo mês não será
-              cobrado. No <strong>semestral</strong> e no{" "}
-              <strong>anual</strong>, vale o mesmo para o semestre ou para o
+              cobrado. No <strong>anual</strong>, vale o mesmo para o
               ano em curso.
             </p>
           </PlanDisclosure>
@@ -358,14 +342,14 @@ function Plans() {
   );
 }
 
-function PlanCard({ badge, price, period, monthlyEquivalent, description, features, cta, href, variant }) {
+function PlanCard({ badge, price, period, monthlyEquivalent, highlight, description, features, cta, href, variant }) {
   const featured = variant === "featured";
   return (
     <Reveal>
       <div
         className={`relative h-full overflow-hidden rounded-3xl p-8 md:p-10 transition ${
           featured
-            ? "bg-paper text-ink-900 shadow-2xl ring-1 ring-gold-500/40"
+            ? "bg-paper text-ink-900 shadow-2xl ring-1 ring-gold-500/40 aj-card-glow aj-shine"
             : "bg-forest-900/60 backdrop-blur ring-1 ring-ink-50/10 text-ink-50"
         }`}
       >
@@ -402,6 +386,12 @@ function PlanCard({ badge, price, period, monthlyEquivalent, description, featur
               {monthlyEquivalent}
             </span>
           </p>
+        )}
+        {highlight && (
+          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-3.5 py-1.5 text-sm font-semibold text-gold-600 ring-1 ring-gold-500/40 aj-pop">
+            <Sparkles size={15} strokeWidth={2.25} className="text-gold-500" />
+            {highlight}
+          </div>
         )}
         <p className={`mt-3 text-sm ${featured ? "text-ink-600" : "text-ink-300"}`}>
           {description}
@@ -486,7 +476,7 @@ function HowItWorks() {
     {
       n: "01",
       title: "Você assina",
-      text: "Escolha o plano mensal, semestral ou anual e finalize o checkout pela Hotmart.",
+      text: "Escolha o plano mensal ou anual e finalize o checkout pela Hotmart.",
     },
     {
       n: "02",

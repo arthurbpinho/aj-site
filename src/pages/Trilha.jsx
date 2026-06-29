@@ -18,7 +18,6 @@ import {
 } from "../data/trilha.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
-const PLAN_SEMESTRAL = "https://pay.hotmart.com/E100577277S?off=1sc5zo29";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
 
 const ADICIONAIS_STATION = {
@@ -284,31 +283,29 @@ function SubscriptionCTA() {
               além dos encontros síncronos e da comunidade.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            <a
-              href={PLAN_MONTHLY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold"
-            >
-              Assinar mensal
-            </a>
-            <a
-              href={PLAN_SEMESTRAL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn bg-forest-700 text-ink-50 hover:bg-forest-600 hover:-translate-y-0.5"
-            >
-              Plano semestral
-            </a>
-            <a
-              href={PLAN_ANNUAL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
-            >
-              Plano anual
-            </a>
+          <div className="md:justify-self-end">
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              <a
+                href={PLAN_MONTHLY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold"
+              >
+                Assinar mensal
+              </a>
+              <a
+                href={PLAN_ANNUAL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
+              >
+                Plano anual · R$ 500
+              </a>
+            </div>
+            <p className="mt-3 text-xs text-ink-400 md:text-right">
+              Plano anual à vista, com R$ 100 de desconto, ou em até 9x
+              conforme as condições de parcelamento.
+            </p>
           </div>
         </div>
       </Reveal>

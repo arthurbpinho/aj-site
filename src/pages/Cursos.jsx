@@ -70,18 +70,24 @@ function SubscriptionBanner() {
             ))}
           </ul>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href={PLAN_MONTHLY} target="_blank" rel="noopener noreferrer" className="btn-gold">
-              Assinar mensal · R$ 50/mês <ArrowRight size={16} />
-            </a>
-            <a
-              href={PLAN_ANNUAL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn bg-forest-900/60 ring-1 ring-ink-50/20 text-ink-50 hover:bg-forest-800"
-            >
-              Plano anual · R$ 500/ano
-            </a>
+          <div className="mt-9">
+            <div className="flex flex-wrap gap-3">
+              <a href={PLAN_MONTHLY} target="_blank" rel="noopener noreferrer" className="btn-gold">
+                Assinar mensal · R$ 50/mês <ArrowRight size={16} />
+              </a>
+              <a
+                href={PLAN_ANNUAL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn bg-forest-900/60 ring-1 ring-ink-50/20 text-ink-50 hover:bg-forest-800"
+              >
+                Plano anual · R$ 500/ano
+              </a>
+            </div>
+            <p className="mt-3 text-xs text-ink-300">
+              Plano anual à vista, com R$ 100 de desconto, ou em até 9x
+              conforme as condições de parcelamento.
+            </p>
           </div>
         </div>
 
@@ -247,23 +253,29 @@ export default function Cursos() {
                 Academia.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
-              <a
-                href={PLAN_MONTHLY}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold"
-              >
-                Assinar mensal
-              </a>
-              <a
-                href={PLAN_ANNUAL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
-              >
-                Plano anual
-              </a>
+            <div className="md:justify-self-end">
+              <div className="flex flex-wrap gap-3 md:justify-end">
+                <a
+                  href={PLAN_MONTHLY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold"
+                >
+                  Assinar mensal
+                </a>
+                <a
+                  href={PLAN_ANNUAL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
+                >
+                  Plano anual · R$ 500
+                </a>
+              </div>
+              <p className="mt-3 text-xs text-ink-400 md:text-right">
+                Plano anual à vista, com R$ 100 de desconto, ou em até 9x
+                conforme as condições de parcelamento.
+              </p>
             </div>
           </div>
         </Reveal>
