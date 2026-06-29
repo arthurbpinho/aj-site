@@ -11,7 +11,7 @@ import { courses } from "../data/courses.js";
 import { coordinatorList } from "../data/coordinators.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
-const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=ev0tv4qt";
+const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
 
 function SubscriptionBanner() {
   return (
