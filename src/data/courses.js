@@ -388,6 +388,35 @@ export const courses = [
       "A proposta é discutir os simbolismos e as imagens arquetípicas presentes na história e mostrar como esses elementos podem servir, de modo didático, à compreensão de processos psíquicos fundamentais. São oito encontros, cada um dedicado a um livro/filme da série.",
     ],
   },
+  {
+    id: "sentimentos-sonhos",
+    title: "Sentimentos, Sonhos, Sombra e Transformações",
+    subtitle: "Jung em entrevistas: sentimento, sombra e redenção",
+    image: "/midias/gruposcursos/sentimentossonhossombra.png",
+    link: "https://pay.hotmart.com/D106755055P",
+    tag: "Grupo",
+    format: "Grupo de Estudos",
+    duration: "Mais de 1 hora e meia",
+    ongoing: true,
+    coordinators: ["arthur", "henrique"],
+    description:
+      "Grupo de estudos sobre a última década de vida e obra de Jung a partir de suas entrevistas — um Jung mais humano e descontraído, e os temas do sentimento, da sombra e da redenção.",
+    about: [
+      "Grupo de estudos da Academia Junguiana conduzido por Henrique Barçante (psicólogo, supervisor e professor) e Arthur Bernardes (psicólogo, gestor e criador da Academia Junguiana), parceiros nesse formato de grupo há cerca de quatro anos.",
+      "Os encontros acontecem online, geralmente às terças-feiras, das 14h às 15h30. Este primeiro vídeo funciona como uma aula aberta de apresentação — os encontros seguintes são reservados aos assinantes da plataforma.",
+      "O foco do grupo é o estudo da última década de vida e obra de Carl Jung a partir de um material mais fluido, direto e humano: suas entrevistas e respostas a perguntas de colegas, pacientes e amigos. Diferente da densidade das Obras Completas, esse formato revela um Jung mais descontraído — que faz piadas, ilustra conceitos teóricos com lembranças da própria infância (como o famoso boneco de madeira que ele mesmo entalhou) e compartilha suas experiências subjetivas e seus sonhos.",
+      "Ao longo de dois meses, o grupo lê duas obras construídas a partir dessas entrevistas — cerca de um mês dedicado a cada uma. A primeira delas, foco principal deste encontro inicial, gira em torno do sentimento, da sombra, da transformação e da redenção.",
+    ],
+    modules: [
+      "A perda do sentimento na civilização moderna — como a hiper-racionalização nos afasta das reações emocionais genuínas",
+      "O valor de compartilhar na clínica — a presença de um outro confiável para que a vida ganhe sentido próprio",
+      "A desobediência e o sacrifício: o caminho da redenção rumo à individuação",
+      "A dinâmica dos opostos — luz e escuridão, criação e destruição no interior do self",
+    ],
+    modulesNote: [
+      "Não há equilíbrio psíquico possível ao se ignorar o aspecto sombrio e opositor da existência — esses são os fios que o grupo persegue ao longo dos encontros.",
+    ],
+  },
 ];
 
 export const getCourseBySlug = (slug) => courses.find((c) => c.id === slug);
