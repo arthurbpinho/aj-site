@@ -5,6 +5,19 @@ export const ampliacoesIntro =
 
 export const ampliacoes = [
   {
+    id: "cristianismo-em-nos",
+    title: "O Cristianismo em Nós — um ensaio de Toni Wolff",
+    author: "João de Bragança",
+    image: "/midias/ampliacoes/cristianismoemnos.jpeg",
+    badge: "Encontro ao vivo · Gratuito",
+    date: "17 de março, sexta-feira · 9h",
+    description:
+      "A palestra de Toni Wolff discute a função religiosa inerente à natureza humana e sua conexão com a neurose, defendendo que a influência do cristianismo sobre a cultura ocidental é profunda, mas frequentemente superficial: muitos não chegaram a internalizar de fato seus valores, o que abre uma fenda entre a crença exterior e a espiritualidade interior — e gera, a partir daí, problemas psicológicos. O encontro destaca a importância do autoconhecimento e da integração do inconsciente para o enfrentamento das falhas morais pessoais e coletivas, propondo uma compreensão mais profunda da própria psique em relação aos ensinamentos cristãos.",
+    bio: "João de Bragança é psicólogo graduado pela PUC Minas, mestrando em Psicologia pela UFJF, formado em Psicologia Analítica pelo Instituto Dédalus, cofundador do projeto Analítica Hoje, membro do Laboratório de Pesquisa Caminhos Junguianos e Secretário Geral na Associação Allos.",
+    cta: "Quero participar gratuitamente",
+    link: "https://www.youtube.com/watch?v=iK6YwbiesE8",
+  },
+  {
     id: "leroux-pavor-jantar-dos-bustos",
     title: "A psicologia do pavor em O jantar dos bustos",
     author: "João de Bragança",

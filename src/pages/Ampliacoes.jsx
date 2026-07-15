@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Headphones, Infinity as InfinityIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Headphones,
+  Infinity as InfinityIcon,
+} from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import { ampliacoes, ampliacoesIntro } from "../data/ampliacoes.js";
 import { asset } from "../utils/asset.js";
@@ -71,7 +76,7 @@ function AmpliacaoCard({ item, index }) {
           />
           <div className="absolute left-4 top-4">
             <span className="rounded-full bg-ink-950/55 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-ink-50 backdrop-blur">
-              Ampliação · {String(index + 1).padStart(2, "0")}
+              {item.badge || `Ampliação · ${String(index + 1).padStart(2, "0")}`}
             </span>
           </div>
         </div>
@@ -83,9 +88,19 @@ function AmpliacaoCard({ item, index }) {
           <h2 className="mt-2 font-serif text-3xl text-forest-900 leading-tight">
             {item.title}
           </h2>
+          {item.date && (
+            <p className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-forest-50 px-3 py-1 text-xs font-medium text-forest-700 ring-1 ring-forest-200">
+              <Calendar size={13} /> {item.date}
+            </p>
+          )}
           <p className="mt-4 text-base text-ink-700 leading-relaxed">
             {item.description}
           </p>
+          {item.bio && (
+            <p className="mt-4 text-sm text-ink-500 leading-relaxed">
+              {item.bio}
+            </p>
+          )}
           <div className="mt-6">
             <a
               href={item.link}
@@ -93,7 +108,7 @@ function AmpliacaoCard({ item, index }) {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Adquirir a gravação <ArrowRight size={16} />
+              {item.cta || "Adquirir a gravação"} <ArrowRight size={16} />
             </a>
           </div>
         </div>
