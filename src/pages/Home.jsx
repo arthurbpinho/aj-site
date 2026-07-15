@@ -16,6 +16,7 @@ import {
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
+import CouponBanner from "../components/CouponBanner.jsx";
 import CoordinatorCard from "../components/CoordinatorCard.jsx";
 import { posts } from "../data/posts.js";
 import { coordinatorList } from "../data/coordinators.js";
@@ -694,6 +695,7 @@ export default function Home() {
 
   return (
     <>
+      <CouponBanner />
       <Hero />
       <Pillars />
       <Plans />
