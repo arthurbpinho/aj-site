@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, GraduationCap, Lock, MessageCircle, Music, Play, X } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, Lock, MessageCircle, Music, Play, X } from "lucide-react";
 import { asset } from "../utils/asset.js";
 
 function InstagramIcon({ size = 20 }) {
@@ -217,6 +217,12 @@ export default function Bioinsta() {
 
         <div className="mt-6 space-y-3">
           <LinkCard
+            icon={BookOpen}
+            title="O Cristianismo em Nós"
+            subtitle="Ampliação gratuita com João de Bragança"
+            href="https://academiajunguiana.com/ampliacoes/"
+          />
+          <LinkCard
             image={asset("/midias/grupobio.jpeg")}
             title="Sentimentos, sonhos, sombra e transformações"
             subtitle="Grupo no WhatsApp para ENCONTRO GRATUITO"
@@ -230,27 +236,9 @@ export default function Bioinsta() {
           />
           <LinkCard
             icon={MessageCircle}
-            title="O Homem e Seus Símbolos"
-            subtitle="Grupo de WhatsApp"
-            href="https://chat.whatsapp.com/CKyssu3cwTGKjEf8FNcc4r"
-          />
-          <LinkCard
-            icon={MessageCircle}
-            title="O Alienista e a Psique"
-            subtitle="Grupo gratuito · WhatsApp"
-            href="https://chat.whatsapp.com/Ff2C5hvhbBq6kMnE7ZF2Lx"
-          />
-          <LinkCard
-            icon={MessageCircle}
             title="Tipos Psicológicos"
             subtitle="Grupo gratuito · WhatsApp"
             href="https://chat.whatsapp.com/GqwEgUue1SkIByZgegi3zP"
-          />
-          <LinkCard
-            icon={MessageCircle}
-            title="Psicologia e Marketing"
-            subtitle="Grupo gratuito · WhatsApp"
-            href="https://chat.whatsapp.com/ICRPMjNWfS729PkmpIKI2w"
           />
           <LinkCard
             icon={GraduationCap}
