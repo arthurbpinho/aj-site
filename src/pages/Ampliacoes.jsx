@@ -76,7 +76,7 @@ function AmpliacaoCard({ item, index }) {
           />
           <div className="absolute left-4 top-4">
             <span className="rounded-full bg-ink-950/55 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-ink-50 backdrop-blur">
-              {item.badge || `Ampliação · ${String(index + 1).padStart(2, "0")}`}
+              {item.badge || "Ampliação"}
             </span>
           </div>
         </div>
