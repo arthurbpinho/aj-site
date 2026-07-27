@@ -299,12 +299,12 @@ function SubscriptionCTA() {
                 rel="noopener noreferrer"
                 className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
               >
-                Plano anual · R$ 500
+                Plano anual · R$ 400
               </a>
             </div>
             <p className="mt-3 text-xs text-ink-400 md:text-right">
-              Plano anual à vista, com R$ 100 de desconto, ou em até 9x
-              conforme as condições de parcelamento.
+              Plano anual à vista, com o cupom academia1ano (válido até
+              15/08), ou em até 9x conforme as condições de parcelamento.
             </p>
           </div>
         </div>

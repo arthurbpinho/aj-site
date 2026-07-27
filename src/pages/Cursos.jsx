@@ -81,12 +81,12 @@ function SubscriptionBanner() {
                 rel="noopener noreferrer"
                 className="btn bg-forest-900/60 ring-1 ring-ink-50/20 text-ink-50 hover:bg-forest-800"
               >
-                Plano anual · R$ 500/ano
+                Plano anual · R$ 400/ano
               </a>
             </div>
             <p className="mt-3 text-xs text-ink-300">
-              Plano anual à vista, com R$ 100 de desconto, ou em até 9x
-              conforme as condições de parcelamento.
+              Plano anual à vista, com o cupom academia1ano (válido até
+              15/08), ou em até 9x conforme as condições de parcelamento.
             </p>
           </div>
         </div>
@@ -269,12 +269,12 @@ export default function Cursos() {
                   rel="noopener noreferrer"
                   className="btn bg-paper text-forest-950 hover:bg-ink-100 hover:-translate-y-0.5"
                 >
-                  Plano anual · R$ 500
+                  Plano anual · R$ 400
                 </a>
               </div>
               <p className="mt-3 text-xs text-ink-400 md:text-right">
-                Plano anual à vista, com R$ 100 de desconto, ou em até 9x
-                conforme as condições de parcelamento.
+                Plano anual à vista, com o cupom academia1ano (válido até
+                15/08), ou em até 9x conforme as condições de parcelamento.
               </p>
             </div>
           </div>

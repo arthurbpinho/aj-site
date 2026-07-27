@@ -261,15 +261,17 @@ function Plans() {
           />
           <PlanCard
             badge="Plano Anual"
-            price="R$ 500"
+            originalPrice="R$ 500"
+            price="R$ 400"
             period="/ano"
-            monthlyEquivalent="R$ 42/mês"
-            highlight="R$ 100 de desconto"
-            description="R$ 100 de desconto à vista, ou parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
+            monthlyEquivalent="R$ 33/mês"
+            highlight="R$ 100 de desconto extra"
+            description="Com o cupom academia1ano, válido até 15 de agosto exclusivamente para o plano anual. Parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
             features={[
               "Tudo do plano mensal",
-              "R$ 500 à vista, com R$ 100 de desconto",
+              "R$ 400 à vista, com o cupom academia1ano",
               "Ou em até 9x, conforme condições de parcelamento",
+              "Cupom válido até 15 de agosto",
               "Compromisso com o estudo de longo prazo",
             ]}
             cta="Assinar anual"
@@ -343,7 +345,7 @@ function Plans() {
   );
 }
 
-function PlanCard({ badge, price, period, monthlyEquivalent, highlight, description, features, cta, href, variant }) {
+function PlanCard({ badge, price, originalPrice, period, monthlyEquivalent, highlight, description, features, cta, href, variant }) {
   const featured = variant === "featured";
   return (
     <Reveal>
@@ -366,7 +368,16 @@ function PlanCard({ badge, price, period, monthlyEquivalent, highlight, descript
         >
           {badge}
         </p>
-        <div className="mt-5 flex items-end gap-1">
+        <div className="mt-5 flex flex-wrap items-end gap-2">
+          {originalPrice && (
+            <span
+              className={`text-2xl md:text-3xl line-through ${
+                featured ? "text-ink-400" : "text-ink-500"
+              }`}
+            >
+              {originalPrice}
+            </span>
+          )}
           <span className="font-serif text-5xl md:text-6xl">{price}</span>
           <span className={`mb-2 text-sm ${featured ? "text-ink-500" : "text-ink-300"}`}>
             {period}
