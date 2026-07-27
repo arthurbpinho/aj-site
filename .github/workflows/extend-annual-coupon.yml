@@ -1,0 +1,32 @@
+name: Prorrogar cupom anual (academia1ano)
+
+on:
+  schedule:
+    # Todo dia 1 de agosto, 09h em Brasília (12h UTC).
+    - cron: "0 12 1 8 *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-banner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Atualizar texto do banner
+        run: python3 .github/scripts/extend_annual_coupon.py
+
+      - name: Commitar e enviar, se houve mudança
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma mudança a commitar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/components/CouponBanner.jsx
+          git commit -m "Prorroga cupom academia1ano: exclusivo do plano anual até 15/08"
+          git push
