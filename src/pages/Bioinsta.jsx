@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, BookOpen, GraduationCap, Lock, MessageCircle, Music, Play, X } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, MessageCircle, Music, Play, X } from "lucide-react";
 import { asset } from "../utils/asset.js";
 
 function InstagramIcon({ size = 20 }) {
@@ -22,7 +22,6 @@ function YoutubeIcon({ size = 20 }) {
 }
 
 const SITE_URL = "https://academiajunguiana.com/";
-const SUBSCRIBERS_URL = "https://assinatura.academiajunguiana.com.br/";
 const LIVE_URL = "https://www.youtube.com/@academiajunguiana/streams";
 const INSTAGRAM_URL = "https://www.instagram.com/academiajunguiana/";
 const YOUTUBE_URL = "https://www.youtube.com/@academiajunguiana";
@@ -143,7 +142,6 @@ function Modal({ open, onClose, children, title }) {
 }
 
 export default function Bioinsta() {
-  const [animusOpen, setAnimusOpen] = useState(false);
   const [podcastOpen, setPodcastOpen] = useState(false);
 
   return (
@@ -217,28 +215,22 @@ export default function Bioinsta() {
 
         <div className="mt-6 space-y-3">
           <LinkCard
-            icon={BookOpen}
-            title="O Cristianismo em Nós"
-            subtitle="Ampliação gratuita com João de Bragança"
-            href="https://academiajunguiana.com/ampliacoes/"
-          />
-          <LinkCard
             image={asset("/midias/grupobio.jpeg")}
-            title="Sentimentos, sonhos, sombra e transformações"
+            title="Sobre sonhos e transformações"
             subtitle="Grupo no WhatsApp para ENCONTRO GRATUITO"
             href="https://chat.whatsapp.com/DdLYkKwXJRxDKctRKatVy5"
-          />
-          <LinkCard
-            icon={Lock}
-            title="Animus e Anima"
-            subtitle="Exclusivo para assinantes"
-            onClick={() => setAnimusOpen(true)}
           />
           <LinkCard
             icon={MessageCircle}
             title="Tipos Psicológicos"
             subtitle="Grupo gratuito · WhatsApp"
             href="https://chat.whatsapp.com/GqwEgUue1SkIByZgegi3zP"
+          />
+          <LinkCard
+            icon={BookOpen}
+            title="Ampliações"
+            subtitle="Seminários avulsos sobre temas diversos para adquirir e ter o primeiro contato com a Academia"
+            href="https://academiajunguiana.com/ampliacoes/"
           />
           <LinkCard
             icon={GraduationCap}
@@ -279,37 +271,6 @@ export default function Bioinsta() {
           academiajunguiana.com
         </p>
       </div>
-
-      <Modal
-        open={animusOpen}
-        onClose={() => setAnimusOpen(false)}
-        title="Animus e Anima"
-      >
-        <p>
-          Esse é um grupo <strong>exclusivo para assinantes</strong> da
-          Academia Junguiana.
-        </p>
-        <p className="mt-3">
-          Você pode assistir à <strong>primeira aula gratuitamente</strong> em
-          nossa plataforma em{" "}
-          <a
-            href={SUBSCRIBERS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-forest-800 underline-offset-4 hover:underline"
-          >
-            assinatura.academiajunguiana.com
-          </a>{" "}
-          e, caso goste, basta assinar para ter acesso ao curso completo e a
-          todos os demais grupos e cursos da Academia.
-        </p>
-        <a
-          href={SITE_URL}
-          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-forest-800 px-6 py-3 text-sm font-medium uppercase tracking-[0.2em] text-ink-50 transition hover:bg-forest-700"
-        >
-          Assine aqui <ArrowRight size={14} />
-        </a>
-      </Modal>
 
       <Modal
         open={podcastOpen}
