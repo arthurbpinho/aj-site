@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, BookOpen, GraduationCap, MessageCircle, Music, Play, X } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, LayoutGrid, MessageCircle, Music, Play, X } from "lucide-react";
 import { asset } from "../utils/asset.js";
 
 function InstagramIcon({ size = 20 }) {
@@ -231,6 +231,12 @@ export default function Bioinsta() {
             title="Ampliações"
             subtitle="Seminários avulsos sobre temas diversos para adquirir e ter o primeiro contato com a Academia"
             href="https://academiajunguiana.com/ampliacoes/"
+          />
+          <LinkCard
+            icon={LayoutGrid}
+            title="Cursos e Grupos"
+            subtitle="Conheça todos os cursos e grupos da Academia"
+            href="https://academiajunguiana.com/cursos"
           />
           <LinkCard
             icon={GraduationCap}
