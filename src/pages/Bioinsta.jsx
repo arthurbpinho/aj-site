@@ -217,7 +217,7 @@ export default function Bioinsta() {
           <LinkCard
             image={asset("/midias/grupobio.jpeg")}
             title="Sobre sonhos e transformações"
-            subtitle="Grupo no WhatsApp para ENCONTRO GRATUITO"
+            subtitle="Grupo de WhatsApp para interessados em participar"
             href="https://chat.whatsapp.com/DdLYkKwXJRxDKctRKatVy5"
           />
           <LinkCard
