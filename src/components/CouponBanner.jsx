@@ -17,8 +17,9 @@ export default function CouponBanner({ className = "" }) {
           <strong className="font-semibold">
             Obrigado por 1 ano de Academia e 1000 inscritos!
           </strong>{" "}
-          Fizemos o cupom especial <strong className="font-semibold">academia1ano</strong>{" "}
-          para todos os planos, confira até o dia 1 de agosto.
+          O cupom especial <strong className="font-semibold">academia1ano</strong>{" "}
+          foi prorrogado — agora exclusivo para o plano anual, até o dia
+          15 de agosto.
         </p>
       </a>
     </Reveal>
