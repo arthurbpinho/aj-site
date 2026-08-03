@@ -18,8 +18,7 @@
 
     <!-- Meta Pixel Code -->
     <script>
-      // 👉 SUBSTITUA pelo ID do seu Pixel (Gerenciador de Eventos da Meta).
-      window.META_PIXEL_ID = "COLE_O_ID_DO_PIXEL_AQUI";
+      window.META_PIXEL_ID = "1406344828032765";
 
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,15 +29,20 @@
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-      // Só inicializa depois que o ID for preenchido (evita erro enquanto está como placeholder).
-      if (window.META_PIXEL_ID && window.META_PIXEL_ID !== "COLE_O_ID_DO_PIXEL_AQUI") {
-        fbq('init', window.META_PIXEL_ID);
-        fbq('track', 'PageView');
-      }
+      fbq('init', window.META_PIXEL_ID);
+      fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
   </head>
   <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1406344828032765&ev=PageView&noscript=1"
+      />
+    </noscript>
     <div id="root"></div>
     <script>
       // SPA fallback decoder — pairs with public/404.html on GitHub Pages.
