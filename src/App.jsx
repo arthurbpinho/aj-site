@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppFab from "./components/WhatsAppFab.jsx";
+import CookieConsentBanner from "./components/CookieConsentBanner.jsx";
 import Home from "./pages/Home.jsx";
 import Ampliacoes from "./pages/Ampliacoes.jsx";
 import Blog from "./pages/Blog.jsx";
@@ -12,7 +13,9 @@ import Cursos from "./pages/Cursos.jsx";
 import CursoDetalhe from "./pages/CursoDetalhe.jsx";
 import Trilha from "./pages/Trilha.jsx";
 import Bioinsta from "./pages/Bioinsta.jsx";
+import PoliticaCookies from "./pages/PoliticaCookies.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { getStoredConsent } from "./utils/cookieConsent.js";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,7 +35,7 @@ function MetaPixelPageView() {
       firstLoad.current = false;
       return;
     }
-    if (typeof window.fbq === "function") {
+    if (typeof window.fbq === "function" && getStoredConsent()?.marketing) {
       window.fbq("track", "PageView");
     }
   }, [pathname]);
@@ -65,6 +68,7 @@ export default function App() {
               <Route path="/cursos/:slug" element={<CursoDetalhe />} />
               <Route path="/trilha" element={<Trilha />} />
               <Route path="/bioinsta" element={<Bioinsta />} />
+              <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>
@@ -72,6 +76,7 @@ export default function App() {
       </main>
       {!isStandalone && <Footer />}
       {!isStandalone && <WhatsAppFab />}
+      <CookieConsentBanner />
     </div>
   );
 }

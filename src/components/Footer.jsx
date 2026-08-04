@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { asset } from "../utils/asset.js";
+import { openCookiePreferences } from "../utils/cookieConsent.js";
 
 function YoutubeIcon(props) {
   return (
@@ -94,8 +95,20 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-ink-100/10">
-        <div className="container-wide flex flex-col items-center justify-between gap-2 py-6 text-center text-xs text-ink-400 sm:flex-row sm:text-left">
+        <div className="container-wide flex flex-col items-center justify-between gap-3 py-6 text-center text-xs text-ink-400 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Academia Junguiana. Todos os direitos reservados.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/politica-de-cookies" className="link-underline hover:text-ink-200">
+              Política de cookies
+            </Link>
+            <button
+              type="button"
+              onClick={openCookiePreferences}
+              className="link-underline hover:text-ink-200"
+            >
+              Preferências de cookies
+            </button>
+          </div>
           <p>
             Site criado por{" "}
             <a
