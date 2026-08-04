@@ -5,6 +5,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppFab from "./components/WhatsAppFab.jsx";
 import CookieConsentBanner from "./components/CookieConsentBanner.jsx";
+import MetaPixelLinkEvents from "./components/MetaPixelLinkEvents.jsx";
 import Home from "./pages/Home.jsx";
 import Ampliacoes from "./pages/Ampliacoes.jsx";
 import Blog from "./pages/Blog.jsx";
@@ -49,6 +50,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-ink-50">
       <ScrollToTop />
       <MetaPixelPageView />
+      <MetaPixelLinkEvents />
       {!isStandalone && <Header />}
       <main className="flex-1">
         <AnimatePresence mode="wait">

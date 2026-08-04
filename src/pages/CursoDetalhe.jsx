@@ -17,6 +17,7 @@ import CoordinatorCard from "../components/CoordinatorCard.jsx";
 import { asset } from "../utils/asset.js";
 import { getCourseBySlug } from "../data/courses.js";
 import { resolveCoordinators } from "../data/coordinators.js";
+import { trackMetaPixelEvent } from "../utils/metaPixel.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
 
@@ -65,6 +66,15 @@ export default function CursoDetalhe() {
     return () => {
       document.title = previous;
     };
+  }, [course]);
+
+  useEffect(() => {
+    if (!course) return;
+    trackMetaPixelEvent("ViewContent", {
+      content_name: course.title,
+      content_ids: [course.id],
+      content_type: "product",
+    });
   }, [course]);
 
   if (!course) return <Navigate to="/cursos" replace />;
