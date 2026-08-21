@@ -16,7 +16,6 @@ import {
 import Reveal from "../components/Reveal.jsx";
 import SectionTitle from "../components/SectionTitle.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
-import CouponBanner from "../components/CouponBanner.jsx";
 import CoordinatorCard from "../components/CoordinatorCard.jsx";
 import { posts } from "../data/posts.js";
 import { coordinatorList } from "../data/coordinators.js";
@@ -261,17 +260,17 @@ function Plans() {
           />
           <PlanCard
             badge="Plano Anual"
-            originalPrice="R$ 500"
-            price="R$ 400"
+            originalPrice="R$ 600"
+            price="R$ 500"
             period="/ano"
-            monthlyEquivalent="R$ 33/mês"
-            highlight="R$ 100 de desconto extra"
-            description="Com o cupom academia1ano, válido até 15 de agosto exclusivamente para o plano anual. Parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
+            monthlyEquivalent="R$ 42/mês"
+            highlight="R$ 100 de desconto"
+            description="Parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
             features={[
               "Tudo do plano mensal",
-              "R$ 400 à vista, com o cupom academia1ano",
+              "R$ 500 à vista",
               "Ou em até 9x, conforme condições de parcelamento",
-              "Cupom válido até 15 de agosto",
+              "R$ 100 de economia em relação ao plano mensal",
               "Compromisso com o estudo de longo prazo",
             ]}
             cta="Assinar anual"
@@ -706,7 +705,6 @@ export default function Home() {
 
   return (
     <>
-      <CouponBanner />
       <Hero />
       <Pillars />
       <Plans />
