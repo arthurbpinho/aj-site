@@ -216,7 +216,7 @@ export default function Bioinsta() {
         <div className="mt-6 space-y-3">
           <LinkCard
             image={asset("/midias/grupobio.jpeg")}
-            title="Sobre sonhos e transformações"
+            title="A prática da psicoterapia"
             subtitle="Grupo de WhatsApp para interessados em participar"
             href="https://chat.whatsapp.com/DdLYkKwXJRxDKctRKatVy5"
           />
