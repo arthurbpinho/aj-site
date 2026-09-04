@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { asset } from "../utils/asset.js";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Reveal from "../components/Reveal.jsx";
 import { posts } from "../data/posts.js";
 
@@ -109,6 +110,10 @@ function PostCard({ post, index }) {
 
 export default function Blog() {
   const [featured, ...rest] = posts;
+  const initialPosts = rest.slice(0, 3);
+  const morePosts = rest.slice(3);
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <>
       <Hero />
@@ -119,10 +124,48 @@ export default function Blog() {
       {rest.length > 0 && (
         <section className="container-wide py-12">
           <div className="grid gap-6 md:grid-cols-3">
-            {rest.map((p, i) => (
+            {initialPosts.map((p, i) => (
               <PostCard key={p.slug} post={p} index={i} />
             ))}
           </div>
+
+          <AnimatePresence initial={false}>
+            {showMore && (
+              <motion.div
+                key="more-posts"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="pt-6 pb-2 grid gap-6 md:grid-cols-3">
+                  {morePosts.map((p, i) => (
+                    <PostCard key={p.slug} post={p} index={i} />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {morePosts.length > 0 && (
+            <div className="mt-12 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowMore((v) => !v)}
+                aria-expanded={showMore}
+                className="group inline-flex items-center justify-center gap-3 rounded-full border border-ink-300 bg-paper px-8 py-3.5 text-sm md:text-base font-medium tracking-wide text-forest-900 shadow-sm transition-all duration-300 hover:border-forest-400 hover:bg-ink-100 hover:shadow-md active:scale-95"
+              >
+                <span>{showMore ? "Ver menos posts" : "Ver mais posts"}</span>
+                <ChevronDown
+                  size={19}
+                  className={`text-gold-600 transition-transform duration-300 ${
+                    showMore ? "rotate-180" : "group-hover:translate-y-0.5"
+                  }`}
+                />
+              </button>
+            </div>
+          )}
         </section>
       )}
     </>
