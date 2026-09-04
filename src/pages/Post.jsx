@@ -115,9 +115,16 @@ export default function Post() {
             {post.sections.map((section, i) => (
               <Reveal key={i}>
                 {section.heading && <h2>{section.heading}</h2>}
-                {section.body.map((p, j) => (
-                  <p key={j}>{renderInline(p)}</p>
-                ))}
+                {section.body.map((p, j) => {
+                  if (typeof p === "string" && p.startsWith("> ")) {
+                    return (
+                      <blockquote key={j}>
+                        {renderInline(p.slice(2))}
+                      </blockquote>
+                    );
+                  }
+                  return <p key={j}>{renderInline(p)}</p>;
+                })}
               </Reveal>
             ))}
           </div>
