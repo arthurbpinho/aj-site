@@ -36,6 +36,7 @@ function MetaPixelPageView() {
       firstLoad.current = false;
       return;
     }
+    if (pathname === "/bioinsta") return;
     if (typeof window.fbq === "function" && getStoredConsent()?.marketing) {
       window.fbq("track", "PageView");
     }
@@ -50,7 +51,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-ink-50">
       <ScrollToTop />
       <MetaPixelPageView />
-      <MetaPixelLinkEvents />
+      {!isStandalone && <MetaPixelLinkEvents />}
       {!isStandalone && <Header />}
       <main className="flex-1">
         <AnimatePresence mode="wait">
@@ -78,7 +79,7 @@ export default function App() {
       </main>
       {!isStandalone && <Footer />}
       {!isStandalone && <WhatsAppFab />}
-      <CookieConsentBanner />
+      {!isStandalone && <CookieConsentBanner />}
     </div>
   );
 }

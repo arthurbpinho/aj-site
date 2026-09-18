@@ -122,12 +122,15 @@ function routeOgPlugin() {
         ].join("\n    ");
         // Remove os metadados padrão da base (title, description, og:*,
         // twitter:*) para então injetar os específicos da rota.
-        const html = sourceHtml
+        let html = sourceHtml
           .replace(/<title>[\s\S]*?<\/title>/, "")
           .replace(/[ \t]*<meta\s+name="description"[^>]*>\s*/i, "")
           .replace(/[ \t]*<meta\s+property="og:[^"]*"[^>]*>\s*/gi, "")
           .replace(/[ \t]*<meta\s+name="twitter:[^"]*"[^>]*>\s*/gi, "")
           .replace("</head>", `    ${tags}\n  </head>`);
+        if (route === "bioinsta") {
+          html = html.replace(/[ \t]*<!-- Meta Pixel Code -->[\s\S]*?<!-- End Meta Pixel Code -->\s*/, "");
+        }
         const outDir = path.join(distDir, route);
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(path.join(outDir, "index.html"), html);

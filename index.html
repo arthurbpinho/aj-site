@@ -20,9 +20,16 @@
     <!-- Carrega em modo 'revoke' por padrão: sem consentimento de marketing salvo
          (chave aj_cookie_consent, ver src/utils/cookieConsent.js), o pixel não grava
          cookie nem envia evento. Só passa a rastrear depois que o banner de cookies
-         concede consentimento (src/utils/metaPixel.js). -->
+         concede consentimento (src/utils/metaPixel.js).
+         Na página /bioinsta, a coleta e o rastreamento são completamente desativados. -->
     <script>
       (function () {
+        var path = window.location.pathname.replace(/\/$/, "");
+        var search = window.location.search || "";
+        if (path === "/bioinsta" || search.indexOf("/bioinsta") !== -1) {
+          return;
+        }
+
         var marketing = false;
         try {
           var raw = localStorage.getItem("aj_cookie_consent");
