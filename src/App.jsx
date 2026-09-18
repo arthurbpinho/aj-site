@@ -26,6 +26,10 @@ function ScrollToTop() {
   return null;
 }
 
+function isBioinsta(pathname) {
+  return pathname.toLowerCase().replace(/\/+$/, "") === "/bioinsta";
+}
+
 // Dispara PageView do Meta Pixel a cada troca de rota do SPA.
 // O PageView inicial já sai no index.html; aqui pulamos o primeiro mount pra não contar duas vezes.
 function MetaPixelPageView() {
@@ -36,7 +40,7 @@ function MetaPixelPageView() {
       firstLoad.current = false;
       return;
     }
-    if (pathname === "/bioinsta") return;
+    if (isBioinsta(pathname)) return;
     if (typeof window.fbq === "function" && getStoredConsent()?.marketing) {
       window.fbq("track", "PageView");
     }
@@ -46,7 +50,7 @@ function MetaPixelPageView() {
 
 export default function App() {
   const location = useLocation();
-  const isStandalone = location.pathname === "/bioinsta";
+  const isStandalone = isBioinsta(location.pathname);
   return (
     <div className="flex min-h-screen flex-col bg-ink-50">
       <ScrollToTop />

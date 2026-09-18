@@ -24,9 +24,9 @@
          Na página /bioinsta, a coleta e o rastreamento são completamente desativados. -->
     <script>
       (function () {
-        var path = window.location.pathname.replace(/\/$/, "");
-        var search = window.location.search || "";
-        if (path === "/bioinsta" || search.indexOf("/bioinsta") !== -1) {
+        var path = window.location.pathname.toLowerCase().replace(/\/+$/, "");
+        var search = (window.location.search || "").toLowerCase();
+        if (path === "/bioinsta" || search.indexOf("bioinsta") !== -1) {
           return;
         }
 
