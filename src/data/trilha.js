@@ -40,6 +40,8 @@ export const trilhaStages = [
       "numinoso-e-religiao",
       "jung-literatura",
       "psicologia-analitica-sonhos-2023",
+      "psicopatologia-junguiana",
+      "tipos-psicologicos-grupo",
     ]),
   },
   {
@@ -59,4 +61,5 @@ export const trilhaAdicionais = resolve([
   "voz-e-tempo",
   "nise-machado",
   "harry-potter",
+  "palestras-ligas-academicas",
 ]);

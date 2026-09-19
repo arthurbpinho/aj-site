@@ -124,7 +124,7 @@ export default function CursoDetalhe() {
                 </span>
               ) : (
                 <span className="rounded-full bg-forest-800/60 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-ink-200 ring-1 ring-ink-50/10">
-                  Gravações
+                  {course.tag === "Grupo" ? "Concluído" : "Gravações"}
                 </span>
               )}
             </div>

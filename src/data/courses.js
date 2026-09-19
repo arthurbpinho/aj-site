@@ -396,16 +396,15 @@ export const courses = [
     link: "https://pay.hotmart.com/D106755055P",
     tag: "Grupo",
     format: "Grupo de Estudos",
-    duration: "Mais de 1 hora e meia",
-    ongoing: true,
+    duration: "12 horas",
     coordinators: ["arthur", "henrique"],
     description:
       "Grupo de estudos sobre a última década de vida e obra de Jung a partir de suas entrevistas — um Jung mais humano e descontraído, e os temas do sentimento, da sombra e da redenção.",
     about: [
       "Grupo de estudos da Academia Junguiana conduzido por Henrique Barçante (psicólogo, supervisor e professor) e Arthur Bernardes (psicólogo, gestor e criador da Academia Junguiana), parceiros nesse formato de grupo há cerca de quatro anos.",
-      "Os encontros acontecem online, geralmente às terças-feiras, das 14h às 15h30. Este primeiro vídeo funciona como uma aula aberta de apresentação — os encontros seguintes são reservados aos assinantes da plataforma.",
+      "O grupo já concluiu seus encontros síncronos e todas as 12 horas de gravações estão disponíveis na íntegra para os assinantes da plataforma e também na compra avulsa.",
       "O foco do grupo é o estudo da última década de vida e obra de Carl Jung a partir de um material mais fluido, direto e humano: suas entrevistas e respostas a perguntas de colegas, pacientes e amigos. Diferente da densidade das Obras Completas, esse formato revela um Jung mais descontraído — que faz piadas, ilustra conceitos teóricos com lembranças da própria infância (como o famoso boneco de madeira que ele mesmo entalhou) e compartilha suas experiências subjetivas e seus sonhos.",
-      "Ao longo de dois meses, o grupo lê duas obras construídas a partir dessas entrevistas — cerca de um mês dedicado a cada uma. A primeira delas, foco principal deste encontro inicial, gira em torno do sentimento, da sombra, da transformação e da redenção.",
+      "Ao longo dos encontros, o grupo explorou duas obras construídas a partir dessas entrevistas — cerca de um mês dedicado a cada uma. A primeira delas gira em torno do sentimento, da sombra, da transformação e da redenção.",
     ],
     modules: [
       "A perda do sentimento na civilização moderna — como a hiper-racionalização nos afasta das reações emocionais genuínas",
@@ -415,6 +414,74 @@ export const courses = [
     ],
     modulesNote: [
       "Não há equilíbrio psíquico possível ao se ignorar o aspecto sombrio e opositor da existência — esses são os fios que o grupo persegue ao longo dos encontros.",
+    ],
+  },
+  {
+    id: "tipos-psicologicos-grupo",
+    title: "Tipos Psicológicos",
+    subtitle: "Volume 6 das Obras Completas de C. G. Jung",
+    image: "/midias/gruposcursos/tipospsicologicosgrupo.jpg",
+    link: "https://pay.hotmart.com/F105913936R?off=hfk0dr8m",
+    tag: "Grupo",
+    format: "Grupo de Estudos",
+    duration: "Gravações completas",
+    ongoing: true,
+    coordinators: ["joao"],
+    description:
+      "Leitura atenta e sequencial do Volume 6 das Obras Completas, discutindo conceitos fundamentais, implicações clínicas e bases teóricas da tipologia junguiana.",
+    book: {
+      title: "Tipos Psicológicos",
+      author: "C. G. Jung",
+    },
+    synopsis: [
+      "Publicado em 1921, Tipos Psicológicos é uma das obras capitais de Carl Gustav Jung e o Volume 6 de suas Obras Completas. Nela, Jung articula uma visão abrangente sobre a organização da consciência, detalhando as atitudes fundamentais (introversão e extroversão) e as quatro funções psicológicas (pensamento, sentimento, sensação e intuição).",
+      "Longe de reduzir a individualidade a rótulos estanques, Jung propõe uma bússola para compreender a dinâmica entre consciente e inconsciente, as tensões entre opostos e os caminhos do processo de individuação, percorrendo um denso percurso histórico e filosófico.",
+    ],
+    authorName: "C. G. Jung",
+    authorDates: "1875–1961",
+    authorBio: [
+      "Carl Gustav Jung foi psiquiatra e psicoterapeuta suíço, fundador da psicologia analítica. Entre suas contribuições mais conhecidas estão a distinção entre as atitudes introvertida e extrovertida, as noções de arquétipo e de inconsciente coletivo e a ideia de sincronicidade. Sua obra influenciou a psiquiatria, a psicologia, os estudos da religião e a literatura.",
+    ],
+    about: [
+      "A Academia Junguiana, em parceria com a Associação Allos, dá início ao Grupo de Estudos sobre Tipos Psicológicos (Volume 6 das Obras Completas).",
+      "O objetivo é realizar uma leitura atenta e sequencial da obra, percorrendo todos os seus capítulos para discutir seus conceitos fundamentais, implicações clínicas e bases teóricas dentro da Psicologia Analítica.",
+      "Um espaço de exploração conjunta voltado para estudantes e profissionais que buscam profundidade no tema. A coordenação é de João de Bragança (CRP 04/75654).",
+    ],
+  },
+  {
+    id: "psicopatologia-junguiana",
+    title: "Psicopatologia Junguiana",
+    subtitle: "Com João de Bragança",
+    image: "/midias/gruposcursos/psicopatologiajunguiana.jpg",
+    link: "https://pay.hotmart.com/O107339915L",
+    tag: "Curso",
+    format: "Curso",
+    duration: "Gravações completas",
+    coordinators: ["joao"],
+    description:
+      "O sofrimento psíquico a partir da Psicologia Analítica: o sintoma em sua dimensão teleológica e simbólica, com foco no manejo clínico e na compreensão estrutural dos transtornos.",
+    about: [
+      "O curso aborda o sofrimento psíquico a partir da perspectiva da Psicologia Analítica, afastando-se da visão puramente nosológica ou classificatória para examinar o sintoma em sua dimensão teleológica (de finalidade) e simbólica.",
+      "Sob a condução de João de Bragança, a proposta foca no manejo clínico e na compreensão estrutural dos transtornos mentais à luz dos conceitos de Carl Gustav Jung.",
+      "Um percurso voltado a estudantes e profissionais de psicologia e saúde mental que buscam enriquecer a escuta clínica com o referencial teórico e prático junguiano.",
+    ],
+  },
+  {
+    id: "palestras-ligas-academicas",
+    title: "Palestras para Ligas Acadêmicas",
+    subtitle: "Encontros e workshops temáticos",
+    image: "/midias/gruposcursos/palestrasligasacademicas.jpg",
+    link: "https://pay.hotmart.com/D107606395V",
+    tag: "Curso",
+    format: "Ciclo de Palestras",
+    duration: "Gravações completas",
+    coordinators: ["arthur", "joao", "henrique"],
+    description:
+      "Série de palestras e workshops da Academia Junguiana voltados para o fomento do conhecimento em Ligas Acadêmicas e grupos de estudos universitários.",
+    about: [
+      "Uma série de palestras e workshops oferecidos pela Academia Junguiana, voltados para o fomento do conhecimento em Ligas Acadêmicas e grupos organizados por estudantes universitários.",
+      "Apresentando os principais conceitos e aplicações da Psicologia Analítica em diálogo com a formação acadêmica, com aulas ministradas pelos coordenadores da Academia Junguiana.",
+      "Todos esses encontros exclusivos ficam reunidos aqui e também estão disponíveis na íntegra para os assinantes da Academia.",
     ],
   },
 ];
