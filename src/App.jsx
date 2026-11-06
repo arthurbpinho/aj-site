@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppFab from "./components/WhatsAppFab.jsx";
+import BlackFridayIntro from "./components/BlackFridayIntro.jsx";
 import CookieConsentBanner from "./components/CookieConsentBanner.jsx";
 import MetaPixelLinkEvents from "./components/MetaPixelLinkEvents.jsx";
 import Home from "./pages/Home.jsx";
@@ -73,6 +74,7 @@ export default function App() {
   return (
     <div className={`flex min-h-screen flex-col ${isDark ? "bg-forest-950" : "bg-ink-50"}`}>
       <ScrollToTop />
+      {isDark && <BlackFridayIntro />}
       <MetaPixelPageView />
       {!isStandalone && <MetaPixelLinkEvents />}
       {!isStandalone && <Header dark={isDark} />}
@@ -105,7 +107,7 @@ export default function App() {
         </AnimatePresence>
       </main>
       {!isStandalone && <Footer />}
-      {!isStandalone && <WhatsAppFab />}
+      {!isStandalone && <WhatsAppFab blackFriday={isDark} />}
       {!isStandalone && <CookieConsentBanner />}
     </div>
   );

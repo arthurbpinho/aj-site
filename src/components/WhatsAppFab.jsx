@@ -1,15 +1,21 @@
 const PHONE = "5531987577892";
 const MESSAGE = "Tenho uma dúvida sobre a academia junguiana";
-const HREF = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+const MESSAGE_BLACK_FRIDAY = "Quero aproveitar a black november da academia!";
+const href = (msg) => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
 
-export default function WhatsAppFab() {
+// `blackFriday`: na página promocional, mensagem da campanha e fundo verde escuro.
+export default function WhatsAppFab({ blackFriday = false }) {
   return (
     <a
-      href={HREF}
+      href={href(blackFriday ? MESSAGE_BLACK_FRIDAY : MESSAGE)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
-      className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
+      className={`fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full text-white shadow-lg transition hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+        blackFriday
+          ? "bg-forest-800 ring-1 ring-gold-500/50 hover:bg-forest-700 focus-visible:ring-gold-500"
+          : "bg-[#25D366] focus-visible:ring-[#25D366]"
+      }`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -29,6 +29,7 @@ import { BLACK_FRIDAY_COUPON } from "../data/promo.js";
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
 const YOUTUBE_VIDEO_ID = "kcBU78cZqfk";
+const VIDEO_TITLE = "Black November - Academia Junguiana - 2026";
 
 function SectionTitle({ eyebrow, title, subtitle, align = "left" }) {
   const a = align === "center" ? "text-center mx-auto" : "text-left";
@@ -51,56 +52,132 @@ function SectionTitle({ eyebrow, title, subtitle, align = "left" }) {
   );
 }
 
+const TITLE_SIZE =
+  "text-[clamp(3.4rem,15vw,7rem)] lg:text-[5.25rem] xl:text-[6.5rem]";
+
+function OffSticker({ className = "" }) {
+  return (
+    <span
+      className={`relative inline-grid h-[4.5rem] w-[4.5rem] shrink-0 rotate-12 place-items-center rounded-full bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-center font-sans text-ink-950 shadow-[0_10px_30px_-8px_rgba(200,156,68,0.8)] ring-2 ring-ink-950/40 ring-offset-2 ring-offset-forest-950 sm:h-24 sm:w-24 ${className}`}
+    >
+      <span className="leading-none">
+        <span className="block text-[9px] font-semibold uppercase tracking-[0.15em] sm:text-[11px]">
+          até
+        </span>
+        <span className="block text-2xl font-extrabold tracking-tight sm:text-[2rem]">
+          20%
+        </span>
+        <span className="block text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs">
+          off
+        </span>
+      </span>
+    </span>
+  );
+}
+
+function PriceTeaser({ label, from, to }) {
+  return (
+    <span className="inline-flex items-baseline gap-2 rounded-full bg-black/40 px-4 py-2 text-sm ring-1 ring-gold-500/30">
+      <span className="text-[10px] uppercase tracking-[0.2em] text-ink-300">{label}</span>
+      <span className="text-ink-400 line-through decoration-gold-500/80">{from}</span>
+      <span className="font-semibold text-gold-400">{to}</span>
+    </span>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-forest-950 text-ink-50">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-40 pointer-events-none"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 15% 15%, rgba(214,179,101,0.22), transparent 42%), radial-gradient(circle at 85% 75%, rgba(95,142,99,0.35), transparent 45%)",
+            "radial-gradient(ellipse at 18% 10%, rgba(214,179,101,0.20), transparent 45%), radial-gradient(ellipse at 90% 85%, rgba(95,142,99,0.30), transparent 50%), linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%)",
         }}
       />
-      <div className="container-wide relative grid gap-12 py-16 md:grid-cols-2 md:py-24 md:items-center">
+      {/* marca d'água */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 select-none font-serif text-[22rem] font-bold leading-none text-ink-50/[0.025] lg:block"
+      >
+        BN
+      </span>
+
+      <div className="container-wide relative grid gap-12 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-14 lg:py-24">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold-500/15 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.3em] text-gold-400 ring-1 ring-gold-500/40"
+            className="inline-flex items-center gap-2 rounded-full bg-black/35 px-3.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.28em] text-gold-400 ring-1 ring-gold-500/40 sm:text-[11px]"
           >
-            <Sparkles size={13} /> Esquenta Black Friday
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
+            </span>
+            Esquenta Black Friday
           </motion.p>
+
           <motion.h1
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] tracking-wide text-ink-50"
+            transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 font-serif font-bold uppercase"
+            aria-label="Black November"
           >
-            BLACK
-            <br />
-            <span className="text-gold-400">NOVEMBER</span>
+            <span className="flex items-center gap-4 sm:gap-6">
+              <span
+                className={`${TITLE_SIZE} leading-[0.85] tracking-[0.04em] text-ink-50 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]`}
+              >
+                Black
+              </span>
+              <OffSticker />
+            </span>
+            <span
+              className={`bf-gold-text block ${TITLE_SIZE} leading-[0.95] tracking-[0.02em] drop-shadow-[0_6px_30px_rgba(200,156,68,0.35)]`}
+            >
+              November
+            </span>
           </motion.h1>
+          <div
+            aria-hidden
+            className="mt-4 h-px w-40 bg-gradient-to-r from-gold-500 to-transparent sm:w-64"
+          />
+
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="mt-6 max-w-xl text-lg text-ink-200 leading-relaxed"
+            className="mt-6 max-w-xl text-base text-ink-200 leading-relaxed sm:text-lg"
           >
-            Estudo sério, acesso facilitado — agora com desconto. Uma formação
-            séria e acessível em Psicologia Junguiana, diretamente da sua casa,
-            numa comunidade de estudo contínuo, crítico e intelectualmente
-            honesto.
+            O esquenta da Black Friday da Academia Junguiana começou. Assine com
+            desconto e tenha acesso a todos os cursos, grupos e à nossa
+            comunidade — uma formação séria e acessível em Psicologia
+            Junguiana, diretamente da sua casa.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 flex flex-wrap gap-2"
+          >
+            <PriceTeaser label="Mensal" from="R$ 50" to="R$ 44,90" />
+            <PriceTeaser label="Anual" from="R$ 500" to="R$ 399,90" />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
-            <a href="#planos" className="btn-gold">
-              Aproveitar o desconto <ArrowRight size={16} />
+            <a
+              href="#planos"
+              className="btn bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400 !px-7 !py-3.5 font-semibold text-ink-950 shadow-[0_12px_32px_-10px_rgba(214,179,101,0.8)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-10px_rgba(214,179,101,0.95)]"
+            >
+              Garantir meu desconto <ArrowRight size={16} />
             </a>
             <Link
               to="/cursos"
@@ -130,7 +207,7 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
           <VideoCTA />
@@ -140,48 +217,103 @@ function Hero() {
   );
 }
 
+// Miniaturas do YouTube: a HD (maxresdefault) pode ainda não existir em vídeos
+// recentes — nesse caso o YouTube devolve um placeholder cinza de 120×90 sem
+// disparar erro no <img>. Detectamos pelo tamanho e caímos para a hqdefault.
+const THUMB_HD = `https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
+const THUMB_FALLBACK = `https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
+
 function VideoCTA() {
   const [playing, setPlaying] = useState(false);
+  const [thumb, setThumb] = useState(THUMB_HD);
+  const fallback = () => setThumb((t) => (t === THUMB_HD ? THUMB_FALLBACK : t));
 
   return (
     <div className="relative">
-      <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-gold-500/25 via-forest-700/20 to-transparent blur-2xl" />
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-ink-950 shadow-2xl ring-1 ring-gold-500/30">
-        {playing ? (
-          <iframe
-            className="h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
-            title="Conheça a Academia Junguiana"
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => setPlaying(true)}
-            className="group absolute inset-0 grid place-items-center overflow-hidden"
-            aria-label="Reproduzir vídeo"
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`}
-              alt=""
-              loading="lazy"
-              referrerPolicy="no-referrer"
-              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              onError={(e) => {
-                e.currentTarget.src = `https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
-              }}
+      <div
+        aria-hidden
+        className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-gold-500/30 via-gold-500/5 to-forest-500/20 blur-2xl"
+      />
+      <div className="relative rounded-[1.4rem] bg-gradient-to-br from-gold-400 via-gold-600/40 to-gold-400/90 p-[1.5px] shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)]">
+        <div className="relative aspect-video w-full overflow-hidden rounded-[1.33rem] bg-black">
+          {playing ? (
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+              title={VIDEO_TITLE}
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/25 to-ink-950/40 transition group-hover:from-ink-950/55" />
-            <span className="relative grid h-20 w-20 place-items-center rounded-full bg-ink-50/95 text-forest-900 shadow-xl transition group-hover:scale-110">
-              <Play size={28} className="ml-1" fill="currentColor" />
-            </span>
-            <span className="absolute bottom-5 left-5 right-5 text-left text-sm uppercase tracking-[0.25em] text-ink-50/90">
-              Conheça a Academia
-            </span>
-          </button>
-        )}
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              className="group absolute inset-0 grid place-items-center overflow-hidden"
+              aria-label={`Reproduzir vídeo: ${VIDEO_TITLE}`}
+            >
+              <img
+                src={thumb}
+                alt=""
+                referrerPolicy="no-referrer"
+                onLoad={(e) => {
+                  if (e.currentTarget.naturalWidth <= 120) fallback();
+                }}
+                onError={fallback}
+                className="absolute inset-0 h-full w-full scale-[1.02] object-cover transition duration-700 group-hover:scale-[1.06]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/25 transition duration-500 group-hover:from-black/60" />
+
+              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gold-400 ring-1 ring-gold-500/40 backdrop-blur sm:left-5 sm:top-5">
+                <Sparkles size={11} /> Black November
+              </span>
+
+              {/* A arte da miniatura tem conteúdo no centro: o play fica embaixo. */}
+              <span className="absolute inset-x-4 bottom-4 flex items-center gap-3 text-left sm:inset-x-5 sm:bottom-5">
+                <span className="bf-ping relative grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 text-ink-950 shadow-[0_10px_30px_-6px_rgba(214,179,101,0.9)] transition duration-300 group-hover:scale-110 sm:h-14 sm:w-14">
+                  <Play size={20} className="ml-0.5" fill="currentColor" />
+                </span>
+                <span>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-gold-400">
+                    Assistir ao vídeo
+                  </span>
+                  <span className="mt-0.5 block font-serif text-base leading-tight text-ink-50 sm:text-xl">
+                    Black November · Academia Junguiana
+                  </span>
+                </span>
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Faixa rolante entre o hero e os planos.
+function Ticker() {
+  const items = [
+    "Black November",
+    "Até 20% off na assinatura",
+    `Cupom ${BLACK_FRIDAY_COUPON}`,
+    "Esquenta Black Friday",
+  ];
+  const half = [...items, ...items];
+  return (
+    <div
+      className="relative overflow-hidden border-y border-gold-500/40 bg-black py-3"
+      aria-label={items.join(" · ")}
+    >
+      <div className="bf-marquee flex w-max" aria-hidden>
+        {[...half, ...half].map((t, i) => (
+          <span
+            key={i}
+            className="flex items-center gap-6 whitespace-nowrap pr-6 text-xs font-semibold uppercase tracking-[0.3em] text-gold-400 sm:text-sm"
+          >
+            {t}
+            <Sparkles size={12} className="text-gold-500/70" />
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -199,7 +331,7 @@ function CouponBox() {
     }
   };
   return (
-    <div className="mx-auto mt-8 flex max-w-xl flex-col items-center justify-center gap-3 rounded-2xl bg-gold-500/10 px-5 py-4 ring-1 ring-gold-500/40 sm:flex-row sm:gap-4">
+    <div className="mx-auto mt-8 flex max-w-xl flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gold-500/60 bg-black/40 px-5 py-4 sm:flex-row sm:gap-4">
       <span className="inline-flex items-center gap-2 text-sm text-ink-200">
         <Tag size={16} className="text-gold-400" />
         Use o cupom no checkout:
@@ -207,7 +339,7 @@ function CouponBox() {
       <button
         type="button"
         onClick={copy}
-        className="inline-flex items-center gap-2 rounded-full bg-ink-50 px-4 py-1.5 font-mono text-sm font-semibold tracking-wider text-forest-950 transition hover:bg-paper"
+        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-4 py-1.5 font-mono text-sm font-bold tracking-wider text-ink-950 transition hover:brightness-110"
         aria-label={`Copiar cupom ${BLACK_FRIDAY_COUPON}`}
       >
         {BLACK_FRIDAY_COUPON}
@@ -222,23 +354,24 @@ function CouponBox() {
 
 function Plans() {
   return (
-    <section id="planos" className="relative scroll-mt-40 border-y border-gold-500/15 bg-forest-900 text-ink-50">
+    <section id="planos" className="relative scroll-mt-48 bg-forest-900 text-ink-50">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 80% 20%, rgba(214,179,101,0.35), transparent 45%), radial-gradient(circle at 10% 80%, rgba(95,142,99,0.35), transparent 45%)",
+            "radial-gradient(circle at 80% 15%, rgba(214,179,101,0.35), transparent 45%), radial-gradient(circle at 10% 85%, rgba(95,142,99,0.35), transparent 45%)",
         }}
       />
-      <div className="container-wide relative py-20 md:py-24">
+      <div className="container-wide relative py-16 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold-400">
             Assinatura
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl leading-tight">
-            Aproveite o desconto do Black November para acessar todos os nossos
-            conteúdos por um valor promocional.
+          <h2 className="font-serif text-[2rem] leading-tight sm:text-4xl md:text-5xl">
+            Aproveite o desconto do{" "}
+            <span className="bf-gold-text font-bold">Black November</span> para
+            acessar todos os nossos conteúdos por um valor promocional.
           </h2>
           <p className="mt-5 text-ink-300 leading-relaxed">
             A assinatura libera todos os cursos e grupos da Academia,
@@ -249,9 +382,10 @@ function Plans() {
 
         <CouponBox />
 
-        <div className="mt-12 mx-auto grid max-w-5xl gap-6 md:grid-cols-2 md:gap-10 md:items-stretch">
+        <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2 md:items-stretch md:gap-10">
           <PlanCard
             badge="Plano Mensal"
+            off="-10%"
             originalPrice="R$ 50"
             price="R$ 44,90"
             period="/mês"
@@ -265,10 +399,11 @@ function Plans() {
             ]}
             cta="Assinar mensal"
             href={PLAN_MONTHLY}
-            variant="default"
           />
           <PlanCard
+            featured
             badge="Plano Anual"
+            off="-20%"
             originalPrice="R$ 500"
             price="R$ 399,90"
             period="/ano"
@@ -281,9 +416,8 @@ function Plans() {
               "Ou em até 9x, conforme condições de parcelamento",
               "Compromisso com o estudo de longo prazo",
             ]}
-            cta="Assinar anual"
+            cta="Assinar anual com desconto"
             href={PLAN_ANNUAL}
-            variant="featured"
           />
         </div>
 
@@ -352,94 +486,105 @@ function Plans() {
   );
 }
 
-function PlanCard({ badge, price, originalPrice, period, monthlyEquivalent, highlight, description, features, cta, href, variant }) {
-  const featured = variant === "featured";
-  return (
-    <Reveal>
-      <div
-        className={`relative h-full overflow-hidden rounded-3xl p-8 md:p-10 transition ${
-          featured
-            ? "bg-ink-50 text-forest-950 shadow-2xl ring-1 ring-gold-500/50 aj-card-glow aj-shine"
-            : "bg-forest-950/70 backdrop-blur ring-1 ring-ink-50/10 text-ink-50"
-        }`}
-      >
-        {featured && (
-          <span className="absolute right-6 top-6 rounded-full bg-forest-900 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold-400">
-            Mais vantajoso
+// Os dois planos têm fundo preto; o anual ganha moldura dourada, brilho e
+// preço em dourado para ser o destaque do Black November.
+function PlanCard({ featured = false, badge, off, price, originalPrice, period, monthlyEquivalent, highlight, description, features, cta, href }) {
+  const body = (
+    <div
+      className={`relative flex h-full flex-col overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10 ${
+        featured
+          ? "bg-gradient-to-b from-[#0b0a07] to-black aj-shine"
+          : "bg-black/85 ring-1 ring-ink-50/10"
+      }`}
+    >
+      {featured && (
+        <span className="absolute right-5 top-5 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-950 sm:right-6 sm:top-6">
+          Mais vantajoso
+        </span>
+      )}
+      <div className="flex items-center gap-3">
+        <p className="text-xs uppercase tracking-[0.3em] text-gold-400">{badge}</p>
+        {!featured && (
+          <span className="rounded-full bg-gold-500/15 px-2 py-0.5 font-sans text-[11px] font-bold text-gold-400 ring-1 ring-gold-500/40">
+            {off}
           </span>
         )}
-        <p
-          className={`text-xs uppercase tracking-[0.3em] ${
-            featured ? "text-gold-600" : "text-gold-400"
+      </div>
+
+      <div className="mt-5 flex flex-wrap items-end gap-x-3 gap-y-1">
+        <span className="mb-1.5 text-xl text-ink-500 line-through decoration-gold-500 decoration-2 sm:text-2xl md:text-3xl">
+          {originalPrice}
+        </span>
+        <span
+          className={`font-serif text-[2.75rem] font-semibold leading-none sm:text-5xl md:text-6xl ${
+            featured ? "bf-gold-text" : "text-ink-50"
           }`}
         >
-          {badge}
-        </p>
-        <div className="mt-5 flex flex-wrap items-end gap-x-3 gap-y-1">
-          {originalPrice && (
-            <span
-              className={`mb-1 text-2xl md:text-3xl line-through decoration-2 ${
-                featured ? "text-ink-400 decoration-gold-600" : "text-ink-400 decoration-gold-500"
-              }`}
-            >
-              {originalPrice}
-            </span>
-          )}
-          <span className="font-serif text-5xl md:text-6xl">{price}</span>
-          <span className={`mb-2 text-sm ${featured ? "text-ink-600" : "text-ink-300"}`}>
-            {period}
+          {price}
+        </span>
+        <span className="mb-1 text-sm text-ink-300">{period}</span>
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        {featured && (
+          <span className="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-2.5 py-1 font-sans text-xs font-extrabold text-ink-950">
+            {off}
           </span>
-        </div>
+        )}
         {monthlyEquivalent && (
-          <p className={`mt-1 text-xs ${featured ? "text-ink-600" : "text-ink-400"}`}>
+          <p className="text-xs text-ink-400">
             equivalente a{" "}
-            <span className={`font-medium ${featured ? "text-forest-800" : "text-gold-400"}`}>
-              {monthlyEquivalent}
-            </span>
+            <span className="font-semibold text-gold-400">{monthlyEquivalent}</span>
           </p>
         )}
-        {highlight && (
-          <div
-            className={`mt-4 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold ring-1 aj-pop ${
-              featured
-                ? "bg-gold-500/15 text-gold-600 ring-gold-500/40"
-                : "bg-gold-500/15 text-gold-400 ring-gold-500/40"
-            }`}
-          >
-            <Sparkles size={15} strokeWidth={2.25} className="text-gold-500" />
-            {highlight}
-          </div>
-        )}
-        <p className={`mt-3 text-sm ${featured ? "text-ink-700" : "text-ink-300"}`}>
-          {description}
-        </p>
-        <ul className="mt-6 space-y-3 text-sm">
-          {features.map((f) => (
-            <li key={f} className="flex items-start gap-2">
-              <span
-                className={`mt-0.5 inline-grid h-4 w-4 place-items-center rounded-full ${
-                  featured ? "bg-forest-800 text-ink-50" : "bg-gold-500 text-ink-950"
-                }`}
-              >
-                <Check size={10} strokeWidth={3} />
-              </span>
-              <span className={featured ? "text-ink-800" : "text-ink-200"}>{f}</span>
-            </li>
-          ))}
-        </ul>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-all ${
-            featured
-              ? "bg-forest-900 text-ink-50 hover:bg-forest-800 hover:-translate-y-0.5"
-              : "bg-gold-500 text-ink-950 hover:bg-gold-400 hover:-translate-y-0.5"
-          }`}
-        >
-          {cta} <ArrowRight size={16} />
-        </a>
       </div>
+
+      {highlight && (
+        <div className="mt-4 inline-flex items-center gap-1.5 self-start rounded-full bg-gold-500/10 px-3.5 py-1.5 text-sm font-semibold text-gold-400 ring-1 ring-gold-500/40 aj-pop">
+          <Sparkles size={15} strokeWidth={2.25} className="text-gold-500" />
+          {highlight}
+        </div>
+      )}
+      <p className="mt-4 text-sm text-ink-300">{description}</p>
+      <ul className="mt-6 space-y-3 text-sm">
+        {features.map((f) => (
+          <li key={f} className="flex items-start gap-2">
+            <span
+              className={`mt-0.5 inline-grid h-4 w-4 shrink-0 place-items-center rounded-full ${
+                featured ? "bg-gold-500 text-ink-950" : "bg-ink-50/15 text-gold-400"
+              }`}
+            >
+              <Check size={10} strokeWidth={3} />
+            </span>
+            <span className="text-ink-200">{f}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 ${
+          featured
+            ? "bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400 text-ink-950 shadow-[0_12px_30px_-10px_rgba(214,179,101,0.8)] hover:brightness-110"
+            : "border border-gold-500/60 text-gold-400 hover:bg-gold-500 hover:text-ink-950"
+        }`}
+        style={{ marginTop: "2rem" }}
+      >
+        {cta} <ArrowRight size={16} />
+      </a>
+    </div>
+  );
+
+  return (
+    <Reveal className="h-full">
+      {featured ? (
+        <div className="h-full rounded-3xl bg-gradient-to-br from-gold-400 via-gold-600/50 to-gold-400 p-[2px] aj-card-glow md:-translate-y-3">
+          {body}
+        </div>
+      ) : (
+        body
+      )}
     </Reveal>
   );
 }
@@ -774,6 +919,7 @@ export default function BlackFriday() {
   return (
     <div className="bg-forest-950 text-ink-50">
       <Hero />
+      <Ticker />
       <Plans />
       <Pillars />
       <HowItWorks />
