@@ -3,16 +3,20 @@ import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { asset } from "../utils/asset.js";
+import BlackFridayCountdown from "./BlackFridayCountdown.jsx";
+import { HOME_PATH } from "../data/promo.js";
 
 const NAV = [
-  { to: "/", label: "Início" },
+  { to: HOME_PATH, label: "Início" },
   { to: "/trilha", label: "Por onde começar?" },
   { to: "/ampliacoes", label: "Ampliações" },
   { to: "/blog", label: "Blog" },
   { to: "/cursos", label: "Nossos grupos e cursos" },
 ];
 
-export default function Header() {
+// `dark`: variante em verde escuro com detalhes em bege, usada na página
+// promocional de Black Friday — que também exibe o contador abaixo do menu.
+export default function Header({ dark = false }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeMenu = () => setOpen(false);
@@ -27,30 +31,44 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-paper/85 backdrop-blur-md border-b border-ink-200/70 shadow-[0_1px_0_rgba(0,0,0,0.02)]"
-          : "bg-transparent"
+        dark
+          ? scrolled
+            ? "bg-forest-950/90 backdrop-blur-md border-b border-ink-50/10"
+            : "bg-forest-950"
+          : scrolled
+            ? "bg-paper/85 backdrop-blur-md border-b border-ink-200/70 shadow-[0_1px_0_rgba(0,0,0,0.02)]"
+            : "bg-transparent"
       }`}
     >
       <div className="container-wide flex items-center justify-between py-4">
         <Link
-          to="/"
+          to={HOME_PATH}
           onClick={closeMenu}
           className="group flex items-center gap-3"
           aria-label="Academia Junguiana"
         >
           <motion.img
-            src={asset("/midias/logos/logoverdeescura.png")}
+            src={asset(dark ? "/midias/logos/logobranca.png" : "/midias/logos/logoverdeescura.png")}
             alt=""
             className="h-10 w-10 object-contain"
             whileHover={{ rotate: -6, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
           />
           <div className="flex flex-col leading-tight">
-            <span className="font-serif text-xl text-forest-900 group-hover:text-forest-700 transition-colors">
+            <span
+              className={`font-serif text-xl transition-colors ${
+                dark
+                  ? "text-ink-50 group-hover:text-gold-400"
+                  : "text-forest-900 group-hover:text-forest-700"
+              }`}
+            >
               Academia Junguiana
             </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-ink-500">
+            <span
+              className={`text-[10px] uppercase tracking-[0.25em] ${
+                dark ? "text-ink-300" : "text-ink-500"
+              }`}
+            >
               Psicologia Analítica
             </span>
           </div>
@@ -64,7 +82,13 @@ export default function Header() {
               end={item.to === "/"}
               className={({ isActive }) =>
                 `link-underline text-sm font-medium transition-colors ${
-                  isActive ? "text-forest-800" : "text-ink-700 hover:text-forest-700"
+                  dark
+                    ? isActive
+                      ? "text-gold-400"
+                      : "text-ink-200 hover:text-ink-50"
+                    : isActive
+                      ? "text-forest-800"
+                      : "text-ink-700 hover:text-forest-700"
                 }`
               }
             >
@@ -75,14 +99,16 @@ export default function Header() {
             href="https://pay.hotmart.com/E100577277S?off=3op85xl5"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary !py-2.5 !px-5"
+            className={`${dark ? "btn-gold" : "btn-primary"} !py-2.5 !px-5`}
           >
             Assinar
           </a>
         </nav>
 
         <button
-          className="lg:hidden inline-flex items-center justify-center rounded-full p-2 text-ink-800 hover:bg-ink-100 transition"
+          className={`lg:hidden inline-flex items-center justify-center rounded-full p-2 transition ${
+            dark ? "text-ink-50 hover:bg-forest-900" : "text-ink-800 hover:bg-ink-100"
+          }`}
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menu"
           aria-expanded={open}
@@ -99,7 +125,9 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden border-t border-ink-200/70 bg-paper/95 backdrop-blur"
+            className={`lg:hidden overflow-hidden border-t backdrop-blur ${
+              dark ? "border-ink-50/10 bg-forest-950/95" : "border-ink-200/70 bg-paper/95"
+            }`}
           >
             <nav className="container-wide flex flex-col gap-1 py-4">
               {NAV.map((item, i) => (
@@ -114,8 +142,10 @@ export default function Header() {
                     end={item.to === "/"}
                     onClick={closeMenu}
                     className={({ isActive }) =>
-                      `block py-3 px-2 text-base font-medium border-b border-ink-200/60 last:border-0 transition-colors ${
-                        isActive ? "text-forest-800" : "text-ink-800 hover:text-forest-700"
+                      `block py-3 px-2 text-base font-medium border-b last:border-0 transition-colors ${
+                        dark
+                          ? `border-ink-50/10 ${isActive ? "text-gold-400" : "text-ink-100 hover:text-ink-50"}`
+                          : `border-ink-200/60 ${isActive ? "text-forest-800" : "text-ink-800 hover:text-forest-700"}`
                       }`
                     }
                   >
@@ -128,7 +158,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
-                className="btn-primary mt-3 w-full"
+                className={`${dark ? "btn-gold" : "btn-primary"} mt-3 w-full`}
               >
                 Assinar
               </a>
@@ -136,6 +166,8 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {dark && <BlackFridayCountdown />}
     </header>
   );
 }

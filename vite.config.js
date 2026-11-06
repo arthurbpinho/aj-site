@@ -59,6 +59,13 @@ const ROUTE_META = {
     image: `${SITE_URL}/midias/trilhapreview.png`,
     type: "website",
   },
+  blackfriday: {
+    title: "Black November — Academia Junguiana",
+    description:
+      "Esquenta Black Friday da Academia Junguiana: assinatura com desconto para acessar todos os cursos, grupos e a comunidade.",
+    image: DEFAULT_IMAGE,
+    type: "website",
+  },
   bioinsta: {
     title: "Academia Junguiana — Todos os nossos links",
     description:
