@@ -484,6 +484,39 @@ export const courses = [
       "Todos esses encontros exclusivos ficam reunidos aqui e também estão disponíveis na íntegra para os assinantes da Academia.",
     ],
   },
+  {
+    id: "pratica-da-psicoterapia",
+    title: "Prática da Psicoterapia",
+    subtitle: "Volume 16 das Obras Completas de C. G. Jung",
+    image: "/midias/gruposcursos/praticadapsicoterapia.jpg",
+    link: "https://pay.hotmart.com/G107778142R?off=f9y2rf4f",
+    tag: "Grupo",
+    format: "Grupo de Estudos",
+    duration: "Novas gravações a cada encontro",
+    ongoing: true,
+    coordinators: ["arthur", "henrique"],
+    description:
+      "Grupo de estudos sobre os métodos e as bases da clínica na Psicologia Analítica, tendo como eixo A Prática da Psicoterapia (Volume 16 das Obras Completas).",
+    book: {
+      title: "A Prática da Psicoterapia",
+      author: "C. G. Jung",
+    },
+    synopsis: [
+      "Reunidos no Volume 16 das Obras Completas, os ensaios de A Prática da Psicoterapia mostram Jung falando como clínico: o que é a psicoterapia, quais são seus objetivos, que lugar ocupa entre a medicina e a visão de mundo do paciente e por que nenhuma técnica, por si só, dá conta do encontro entre duas personalidades.",
+      "Escritos ao longo de várias décadas, os textos tratam a relação terapêutica como um processo dialético, em que o analista também é afetado e transformado, e defendem que o método deve se adaptar à singularidade de cada pessoa — e não o contrário.",
+    ],
+    authorName: "C. G. Jung",
+    authorDates: "1875–1961",
+    authorBio: [
+      "Carl Gustav Jung foi psiquiatra e psicoterapeuta suíço, fundador da psicologia analítica. Entre suas contribuições mais conhecidas estão a distinção entre as atitudes introvertida e extrovertida, as noções de arquétipo e de inconsciente coletivo e a ideia de sincronicidade. Sua obra influenciou a psiquiatria, a psicologia, os estudos da religião e a literatura.",
+    ],
+    about: [
+      "Grupo de estudos da Academia Junguiana conduzido por Arthur Bernardes (psicólogo, gestor e criador da Academia Junguiana) e Henrique Barçante (psicólogo, supervisor e professor), parceiros nesse formato de grupo há cerca de quatro anos.",
+      "Um grupo dedicado à análise dos métodos e à discussão das bases da clínica na Psicologia Analítica, tendo como eixo condutor a obra A Prática da Psicoterapia (Volume 16 das Obras Completas de C. G. Jung).",
+      "O espaço propõe a investigação teórica dos fundamentos do tratamento analítico, do enquadre clínico e do manejo das dinâmicas transferenciais e simbólicas.",
+      "Um espaço voltado a estudantes e profissionais de psicologia que querem aproximar a teoria junguiana da prática clínica.",
+    ],
+  },
 ];
 
 export const getCourseBySlug = (slug) => courses.find((c) => c.id === slug);

@@ -42,6 +42,7 @@ export const trilhaStages = [
       "psicologia-analitica-sonhos-2023",
       "psicopatologia-junguiana",
       "tipos-psicologicos-grupo",
+      "pratica-da-psicoterapia",
     ]),
   },
   {
