@@ -1,7 +1,7 @@
 # Academia Junguiana — site institucional
 
 Site institucional da **Academia Junguiana**, escola de formação em psicologia
-analítica junguiana e parte do ecossistema **[Allos](https://allos.org.br)**.
+analítica junguiana
 
 ---
 
@@ -31,4 +31,4 @@ Router em modo SPA.
 
 ---
 
-Site institucional da **Academia Junguiana**, parte do ecossistema **[Associação Allos](https://allos.org.br)**.
+Site institucional da **Academia Junguiana**
