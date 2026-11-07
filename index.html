@@ -26,7 +26,11 @@
       (function () {
         var path = window.location.pathname.toLowerCase().replace(/\/+$/, "");
         var search = (window.location.search || "").toLowerCase();
-        if (path === "/bioinsta" || search.indexOf("bioinsta") !== -1) {
+        if (
+          path === "/bioinsta" ||
+          path === "/bioinstabf" ||
+          search.indexOf("bioinsta") !== -1
+        ) {
           return;
         }
 

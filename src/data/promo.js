@@ -7,6 +7,7 @@
 export const BLACK_FRIDAY_ACTIVE = true;
 
 export const BLACK_FRIDAY_PATH = "/blackfriday";
+export const BIOINSTA_BF_PATH = "/bioinstabf";
 
 // Início da Black Friday: virada de 26 para 27/11, meia-noite de Brasília.
 export const BLACK_FRIDAY_START = new Date("2026-11-27T00:00:00-03:00");
@@ -18,3 +19,6 @@ export const HOME_PATH = BLACK_FRIDAY_ACTIVE ? BLACK_FRIDAY_PATH : "/";
 
 export const isBlackFridayPath = (pathname) =>
   pathname.toLowerCase().replace(/\/+$/, "") === BLACK_FRIDAY_PATH;
+
+export const isBioinstaBfPath = (pathname) =>
+  pathname.toLowerCase().replace(/\/+$/, "") === BIOINSTA_BF_PATH;

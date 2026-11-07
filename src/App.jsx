@@ -16,13 +16,16 @@ import Cursos from "./pages/Cursos.jsx";
 import CursoDetalhe from "./pages/CursoDetalhe.jsx";
 import Trilha from "./pages/Trilha.jsx";
 import Bioinsta from "./pages/Bioinsta.jsx";
+import BioinstaBf from "./pages/BioinstaBf.jsx";
 import PoliticaCookies from "./pages/PoliticaCookies.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { getStoredConsent } from "./utils/cookieConsent.js";
 import {
   BLACK_FRIDAY_ACTIVE,
   BLACK_FRIDAY_PATH,
+  BIOINSTA_BF_PATH,
   isBlackFridayPath,
+  isBioinstaBfPath,
 } from "./data/promo.js";
 
 function ScrollToTop() {
@@ -34,14 +37,20 @@ function ScrollToTop() {
 }
 
 function isBioinsta(pathname) {
-  return pathname.toLowerCase().replace(/\/+$/, "") === "/bioinsta";
+  const p = pathname.toLowerCase().replace(/\/+$/, "");
+  return p === "/bioinsta" || p === BIOINSTA_BF_PATH;
 }
 
-// Durante a Black Friday, a página inicial redireciona para a promocional,
-// preservando query string (UTMs) e âncora (ex.: /#planos).
+// Durante a Black Friday, a página inicial e o /bioinsta redirecionam para as
+// versões promocionais, preservando query string (UTMs) e âncora (ex.: /#planos).
 function HomeRedirect() {
   const { search, hash } = useLocation();
   return <Navigate to={{ pathname: BLACK_FRIDAY_PATH, search, hash }} replace />;
+}
+
+function BioinstaRedirect() {
+  const { search, hash } = useLocation();
+  return <Navigate to={{ pathname: BIOINSTA_BF_PATH, search, hash }} replace />;
 }
 
 // Dispara PageView do Meta Pixel a cada troca de rota do SPA.
@@ -70,9 +79,10 @@ function MetaPixelPageView() {
 export default function App() {
   const location = useLocation();
   const isStandalone = isBioinsta(location.pathname);
-  const isDark = isBlackFridayPath(location.pathname);
+  const isDark =
+    isBlackFridayPath(location.pathname) || isBioinstaBfPath(location.pathname);
   return (
-    <div className={`flex min-h-screen flex-col ${isDark ? "bg-forest-950" : "bg-ink-50"}`}>
+    <div className={`flex min-h-screen flex-col ${isDark || isStandalone ? "bg-forest-950" : "bg-ink-50"}`}>
       <ScrollToTop />
       {isDark && <BlackFridayIntro />}
       <MetaPixelPageView />
@@ -99,7 +109,11 @@ export default function App() {
               <Route path="/cursos" element={<Cursos />} />
               <Route path="/cursos/:slug" element={<CursoDetalhe />} />
               <Route path="/trilha" element={<Trilha />} />
-              <Route path="/bioinsta" element={<Bioinsta />} />
+              <Route
+                path="/bioinsta"
+                element={BLACK_FRIDAY_ACTIVE ? <BioinstaRedirect /> : <Bioinsta />}
+              />
+              <Route path={BIOINSTA_BF_PATH} element={<BioinstaBf />} />
               <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

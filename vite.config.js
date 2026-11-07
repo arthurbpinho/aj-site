@@ -73,6 +73,13 @@ const ROUTE_META = {
     image: `${SITE_URL}/midias/bioinstapreview.png`,
     type: "website",
   },
+  bioinstabf: {
+    title: "Black November — Links da Academia Junguiana",
+    description:
+      "Aproveite o cupom blacknovember para assinar a Academia Junguiana. Todos os nossos links em um só lugar.",
+    image: `${SITE_URL}/midias/bioinstapreview.png`,
+    type: "website",
+  },
   // Uma rota por curso/grupo (/cursos/<id>), derivada do próprio catálogo.
   ...Object.fromEntries(
     courses.map((c) => [
@@ -135,7 +142,7 @@ function routeOgPlugin() {
           .replace(/[ \t]*<meta\s+property="og:[^"]*"[^>]*>\s*/gi, "")
           .replace(/[ \t]*<meta\s+name="twitter:[^"]*"[^>]*>\s*/gi, "")
           .replace("</head>", `    ${tags}\n  </head>`);
-        if (route === "bioinsta") {
+        if (route === "bioinsta" || route === "bioinstabf") {
           html = html.replace(/[ \t]*<!-- Meta Pixel Code -->[\s\S]*?<!-- End Meta Pixel Code -->\s*/, "");
         }
         const outDir = path.join(distDir, route);

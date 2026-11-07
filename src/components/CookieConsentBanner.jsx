@@ -77,8 +77,9 @@ export default function CookieConsentBanner() {
     setView("details");
   }
 
-  // Não exibe o banner na página /bioinsta (com ou sem barra no final)
-  if (location.pathname.toLowerCase().replace(/\/+$/, "") === "/bioinsta") {
+  // Não exibe o banner nas páginas /bioinsta e /bioinstabf (com ou sem barra no final)
+  const cleanPath = location.pathname.toLowerCase().replace(/\/+$/, "");
+  if (cleanPath === "/bioinsta" || cleanPath === "/bioinstabf") {
     return null;
   }
 
