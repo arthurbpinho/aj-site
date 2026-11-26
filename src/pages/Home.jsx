@@ -101,8 +101,8 @@ function Hero() {
           >
             {[
               "Acesso a todos os cursos e grupos da Academia",
-              "Encontros síncronos e gravações vitalícias",
-              "Comunidade exclusiva no WhatsApp",
+              "Encontros síncronos, gravações e certificados",
+              "Comunidade exclusiva de estudo e ensino",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2">
                 <span className="mt-1 inline-grid h-4 w-4 place-items-center rounded-full bg-forest-700 text-ink-50">
@@ -198,7 +198,7 @@ function Pillars() {
     <section className="container-wide py-20">
       <SectionTitle
         eyebrow="Por que aprofundar seu estudo"
-        title="Mais do que um curso — uma comunidade de estudo."
+        title="Mais do que uma assinatura - uma comunidade de estudo e ensino"
         subtitle="Comprometemo-nos a difundir o conhecimento científico sobre a Psicologia Analítica no Brasil com rigor, honestidade intelectual e acolhimento."
       />
       <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -236,9 +236,9 @@ function Plans() {
             Tenha acesso a tudo, por um valor acessível.
           </h2>
           <p className="mt-5 text-ink-300 leading-relaxed">
-            A assinatura libera todos os cursos e grupos da Academia,
-            encontros síncronos e o acesso à nossa comunidade. Sem precisar
-            comprar curso por curso.
+            Funcionamos exclusivamente no modelo de assinatura, com foco em uma
+            comunidade de estudo e ensino. A assinatura libera todos os nossos
+            cursos, grupos de estudo, aulas síncronas, gravações e certificados.
           </p>
         </div>
 
@@ -280,6 +280,26 @@ function Plans() {
         </div>
 
         <div className="mt-10 mx-auto max-w-2xl space-y-4">
+          <PlanDisclosure
+            label="Como funciona nossa assinatura?"
+            cta="Clique aqui para entender nosso modelo"
+            title="Como funciona nossa assinatura?"
+          >
+            <p>
+              Trabalhamos <strong>apenas com o modelo de assinatura</strong>,
+              com foco em construir uma verdadeira{" "}
+              <strong>comunidade de estudo e ensino</strong> em Psicologia
+              Analítica — por isso, não realizamos a venda de cursos avulsos.
+            </p>
+            <p className="mt-4">
+              Com o valor pago, tanto no <strong>plano mensal</strong> quanto no{" "}
+              <strong>plano anual</strong>, você tem acesso completo a todos os
+              nossos conteúdos, cursos, grupos de estudo e aulas síncronas, com
+              direito a todas as gravações, emissão de certificados, novos
+              lançamentos e participação na nossa comunidade exclusiva.
+            </p>
+          </PlanDisclosure>
+
           <PlanDisclosure
             label="É estudante de graduação?"
             cta="Clique aqui para saber mais"

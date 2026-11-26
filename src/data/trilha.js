@@ -11,7 +11,7 @@ const byId = Object.fromEntries(courses.map((c) => [c.id, c]));
 const resolve = (ids) => ids.map((id) => byId[id]).filter(Boolean);
 
 export const trilhaIntro =
-  "Muita gente chega à Psicologia Analítica sem saber por onde começar. Esta é a trilha da Academia: um caminho do introdutório ao mais profundo, para você estudar com chão firme e avançar no seu ritmo. Tudo abaixo está incluso na assinatura — ou disponível para compra avulsa.";
+  "Muita gente chega à Psicologia Analítica sem saber por onde começar. Esta é a trilha da Academia: um caminho do introdutório ao mais profundo, para você estudar com chão firme e avançar no seu ritmo dentro da nossa comunidade de estudo e ensino. Tudo abaixo está integralmente incluso na nossa assinatura.";
 
 export const trilhaStages = [
   {

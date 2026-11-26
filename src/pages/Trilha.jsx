@@ -278,9 +278,10 @@ function SubscriptionCTA() {
               Toda a trilha está inclusa na assinatura.
             </h3>
             <p className="mt-4 max-w-xl text-ink-300 leading-relaxed">
-              Em vez de comprar curso por curso, a assinatura libera todos os
-              cursos e grupos da Academia — do introdutório ao mais avançado —
-              além dos encontros síncronos e da comunidade.
+              Funcionamos exclusivamente no modelo de assinatura, com foco em uma
+              comunidade de estudo e ensino. A assinatura libera todos os cursos
+              e grupos da Academia — do introdutório ao mais avançado — além dos
+              encontros síncronos, gravações e certificados.
             </p>
           </div>
           <div className="md:justify-self-end">

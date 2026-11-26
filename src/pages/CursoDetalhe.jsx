@@ -3,7 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  ShoppingCart,
+  ArrowRight,
   Clock,
   GraduationCap,
   ShieldCheck,
@@ -20,26 +20,23 @@ import { resolveCoordinators } from "../data/coordinators.js";
 import { trackMetaPixelEvent } from "../utils/metaPixel.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
+const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
 
-// Botão secundário, presente no topo e no rodapé: leva à assinatura mensal.
+// Explicação do modelo exclusivo de assinatura, presente no topo e no rodapé.
 function SubscriptionHint({ tone = "light" }) {
   const base =
     tone === "dark"
-      ? "text-ink-300 hover:text-ink-100"
-      : "text-ink-600 hover:text-ink-800";
+      ? "text-ink-300"
+      : "text-ink-600";
   return (
-    <a
-      href={PLAN_MONTHLY}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`group block max-w-sm text-sm leading-relaxed transition ${base}`}
-    >
-      Quer ter acesso a todos os grupos? Assine mensalmente clicando{" "}
-      <span className="font-semibold text-gold-500 underline decoration-gold-500/50 underline-offset-2 group-hover:decoration-gold-400">
-        aqui
+    <p className={`max-w-md text-sm leading-relaxed ${base}`}>
+      Funcionamos exclusivamente no{" "}
+      <span className="font-semibold text-gold-400">
+        modelo de assinatura para nossa comunidade de estudo e ensino
       </span>
-      .
-    </a>
+      . Ao assinar, você acessa este e todos os demais cursos, grupos, aulas
+      síncronas, gravações e certificados da Academia.
+    </p>
   );
 }
 
@@ -90,7 +87,7 @@ export default function CursoDetalhe() {
   const facts = [
     { icon: Clock, label: "Carga horária", value: course.duration },
     { icon: GraduationCap, label: "Certificado", value: "Incluso" },
-    { icon: ShieldCheck, label: "Acesso", value: "Avulso e vitalício" },
+    { icon: ShieldCheck, label: "Acesso", value: "Exclusivo pela assinatura" },
   ];
 
   return (
@@ -163,14 +160,24 @@ export default function CursoDetalhe() {
             </div>
 
             <div className="mt-9 flex flex-col items-start gap-4">
-              <a
-                href={course.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold text-base"
-              >
-                <ShoppingCart size={18} /> Comprar as gravações
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={PLAN_MONTHLY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold text-base"
+                >
+                  Assinar mensal · R$ 50/mês <ArrowRight size={18} />
+                </a>
+                <a
+                  href={PLAN_ANNUAL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn bg-forest-900/60 ring-1 ring-ink-50/20 text-ink-50 hover:bg-forest-800 text-base"
+                >
+                  Plano anual · R$ 500/ano
+                </a>
+              </div>
               <SubscriptionHint tone="dark" />
             </div>
           </div>
@@ -201,11 +208,11 @@ export default function CursoDetalhe() {
           <div className="container-wide flex items-start gap-3 py-4 text-sm text-ink-700">
             <Users size={18} className="mt-0.5 shrink-0 text-gold-600" />
             <p>
-              Este grupo ainda está <strong>em andamento</strong>, com encontros
-              síncronos exclusivos para assinantes. Na compra avulsa, você garante
-              o acesso vitalício às gravações já disponíveis e também às próximas
-              gravações deste curso, mas não terá acesso às aulas síncronas, que
-              são reservadas aos assinantes.
+              Este grupo está <strong>em andamento</strong>, com encontros
+              síncronos exclusivos para assinantes. Fazendo parte da nossa
+              assinatura, você participa das aulas ao vivo com a nossa
+              comunidade de estudo e ensino e tem acesso a todas as gravações já
+              disponíveis e às próximas.
             </p>
           </div>
         </section>
@@ -347,21 +354,23 @@ export default function CursoDetalhe() {
             <div className="flex flex-col">
               <ShieldCheck className="text-forest-700" size={24} />
               <h3 className="mt-4 font-serif text-xl text-forest-900">
-                Acesso vitalício
+                Somente por assinatura
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                A compra é avulsa e o acesso é vitalício: você adquire uma vez e
-                assiste às gravações quando e quantas vezes quiser.
+                Trabalhamos exclusivamente com o modelo de assinatura: com o
+                plano mensal ou anual, você tem acesso completo às gravações
+                deste conteúdo e a todos os cursos e grupos da Academia.
               </p>
             </div>
             <div className="flex flex-col">
               <BookOpen className="text-forest-700" size={24} />
               <h3 className="mt-4 font-serif text-xl text-forest-900">
-                Ou assine tudo
+                Comunidade de estudo e ensino
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-600">
-                Se preferir, há a opção de assinatura, com todos os conteúdos da
-                Academia inclusos. Escolha o que fizer mais sentido para você.
+                Nosso foco é formar uma comunidade de estudo e ensino contínua,
+                unindo aulas gravadas, encontros síncronos e diálogo constante
+                entre alunos e coordenadores.
               </p>
             </div>
           </div>
@@ -386,23 +395,34 @@ export default function CursoDetalhe() {
                   {course.format} · {course.duration}
                 </p>
                 <h3 className="mt-3 font-serif text-3xl leading-tight md:text-4xl">
-                  Leve as gravações de {course.title}.
+                  Acesse {course.title} na nossa assinatura.
                 </h3>
                 <p className="mt-4 max-w-xl leading-relaxed text-ink-300">
-                  Acesso avulso e vitalício, com certificado. Compre apenas este
-                  conteúdo — ou assine a Academia e tenha todos os grupos e cursos
-                  inclusos.
+                  Funcionamos exclusivamente no modelo de assinatura para uma
+                  comunidade de estudo e ensino. Assine a Academia e tenha
+                  acesso imediato a este conteúdo, com certificado, além de
+                  todos os nossos cursos, grupos e aulas síncronas.
                 </p>
               </div>
-              <div className="flex flex-col items-start gap-4 md:items-end">
-                <a
-                  href={course.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold text-base"
-                >
-                  <ShoppingCart size={18} /> Comprar as gravações
-                </a>
+              <div className="flex flex-col items-start gap-4 md:items-end md:text-right">
+                <div className="flex flex-wrap gap-3 md:justify-end">
+                  <a
+                    href={PLAN_MONTHLY}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold text-base"
+                  >
+                    Assinar mensal · R$ 50/mês <ArrowRight size={18} />
+                  </a>
+                  <a
+                    href={PLAN_ANNUAL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn bg-paper text-forest-950 hover:bg-ink-100 text-base"
+                  >
+                    Plano anual · R$ 500/ano
+                  </a>
+                </div>
                 <SubscriptionHint tone="dark" />
               </div>
             </div>

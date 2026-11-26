@@ -3,7 +3,7 @@ import { ArrowRight, Compass } from "lucide-react";
 import Reveal from "./Reveal.jsx";
 
 // Banner de entrada para a Trilha da Academia. Usado na Home (após os três
-// passos) e na página de cursos/grupos avulsos.
+// passos) e na página de catálogo de cursos e grupos.
 export default function TrilhaBanner({ className = "" }) {
   return (
     <Reveal className={className}>

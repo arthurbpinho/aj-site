@@ -2,8 +2,8 @@
 //
 // Cada item reúne, numa fonte única:
 //   - dados do card (title, subtitle, image, description, tag);
-//   - o link Hotmart de compra avulsa (link);
-//   - o conteúdo da página de venda individual em /cursos/<id>
+//   - o link da assinatura da Academia (link);
+//   - o conteúdo da página de detalhe em /cursos/<id>
 //     (format, duration, ongoing, book, synopsis, author*, about, modules);
 //   - os coordenadores responsáveis (ids resolvidos em ../data/coordinators).
 //
@@ -11,8 +11,7 @@
 //   - `tag` alimenta o filtro do catálogo: "Grupo" | "Curso" | "Minicurso".
 //   - `format` é o rótulo por extenso exibido nas páginas.
 //   - `ongoing: true` marca grupos ainda em andamento, com encontros síncronos
-//     para assinantes (a compra avulsa dá acesso vitalício às gravações já
-//     disponíveis).
+//     para assinantes e gravações disponibilizadas na plataforma.
 //   - sinopses e biografias foram reescritas pela Academia a partir de
 //     material de referência, em registro próprio.
 
@@ -22,7 +21,7 @@ export const courses = [
     title: "Fundamentos da Psicologia Complexa",
     subtitle: "A obra fundadora de Toni Wolff",
     image: "/midias/gruposcursos/fundamentospsicomplexa.png",
-    link: "https://pay.hotmart.com/R101374480Y",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "Mais de 50 horas",
@@ -54,7 +53,7 @@ export const courses = [
     title: "O Homem e Seus Símbolos",
     subtitle: "A última obra organizada por Jung",
     image: "/midias/gruposcursos/homemeseussimbolos.png",
-    link: "https://pay.hotmart.com/B105114199I",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "Mais de 10 horas",
@@ -85,7 +84,7 @@ export const courses = [
     title: "A Experiência Junguiana",
     subtitle: "Clínica e individuação em James A. Hall",
     image: "/midias/gruposcursos/experienciajunguiana.png",
-    link: "https://pay.hotmart.com/X100137473B",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "13 horas",
@@ -115,7 +114,7 @@ export const courses = [
     title: "Como Entender os Sonhos",
     subtitle: "O método junguiano em Mary Ann Mattoon",
     image: "/midias/gruposcursos/comoentenderossonhos.png",
-    link: "https://pay.hotmart.com/V95141695A",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "18 horas",
@@ -144,7 +143,7 @@ export const courses = [
     title: "Compreendendo os Tipos Psicológicos",
     subtitle: "Minicurso em quatro aulas",
     image: "/midias/gruposcursos/tipospsicologicos.png",
-    link: "https://pay.hotmart.com/E97001018H",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Minicurso",
     format: "Minicurso",
     duration: "5 horas",
@@ -167,7 +166,7 @@ export const courses = [
     title: "A Voz e o Tempo",
     subtitle: "Reflexões para Jovens Terapeutas",
     image: "/midias/gruposcursos/vozeotempo.png",
-    link: "https://pay.hotmart.com/W101374635P",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "36 horas",
@@ -196,7 +195,7 @@ export const courses = [
     title: "O Numinoso e a Religião",
     subtitle: "Na Psicologia Analítica",
     image: "/midias/gruposcursos/numinosoeareligiao.jpg",
-    link: "https://pay.hotmart.com/J102659484M",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Curso",
     format: "Curso",
     duration: "5 horas",
@@ -220,7 +219,7 @@ export const courses = [
     title: "Carl Jung e Literatura",
     subtitle: "Quando a psique encontra a arte",
     image: "/midias/gruposcursos/carljungliteratura.png",
-    link: "https://pay.hotmart.com/P104351329I",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Curso",
     format: "Curso",
     duration: "12 horas",
@@ -237,7 +236,7 @@ export const courses = [
     title: "Psicologia Analítica e Sonhos",
     subtitle: "Gravações do grupo de 2023",
     image: "/midias/gruposcursos/psianaliticaesonhos2023.png",
-    link: "https://pay.hotmart.com/H95173259Y",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "18 horas",
@@ -254,7 +253,7 @@ export const courses = [
     title: "A Bíblia e a Psique",
     subtitle: "Simbolismo da individuação no Antigo Testamento",
     image: "/midias/gruposcursos/bibliapsique.png",
-    link: "https://pay.hotmart.com/Q100378659P",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "24 horas",
@@ -284,7 +283,7 @@ export const courses = [
     title: "Presente e Futuro",
     subtitle: "Obras Completas, volume 10/1",
     image: "/midias/gruposcursos/presentefuturo.png",
-    link: "https://pay.hotmart.com/X105112647P",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "8 horas",
@@ -314,7 +313,7 @@ export const courses = [
     title: "Animus e Anima",
     subtitle: "Os dois ensaios de Emma Jung",
     image: "/midias/gruposcursos/animusanima.png",
-    link: "https://pay.hotmart.com/F105940240R",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "Mais de 4 horas",
@@ -345,7 +344,7 @@ export const courses = [
     title: "Nise, Machado de Assis e Psicologia",
     subtitle: "Cultura brasileira sob a lente junguiana",
     image: "/midias/gruposcursos/nisemachadodeassiseapsi.png",
-    link: "https://pay.hotmart.com/L102922969Y",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Curso",
     format: "Curso",
     duration: "8 horas",
@@ -376,7 +375,7 @@ export const courses = [
     title: "Harry Potter e Psicologia Analítica",
     subtitle: "Símbolos, sombra e individuação na saga",
     image: "/midias/gruposcursos/harrypotter.png",
-    link: "https://pay.hotmart.com/L105112573R",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "12 horas",
@@ -393,7 +392,7 @@ export const courses = [
     title: "Sentimentos, Sonhos, Sombra e Transformações",
     subtitle: "Jung em entrevistas: sentimento, sombra e redenção",
     image: "/midias/gruposcursos/sentimentossonhossombra.png",
-    link: "https://pay.hotmart.com/D106755055P",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "12 horas",
@@ -402,7 +401,7 @@ export const courses = [
       "Grupo de estudos sobre a última década de vida e obra de Jung a partir de suas entrevistas — um Jung mais humano e descontraído, e os temas do sentimento, da sombra e da redenção.",
     about: [
       "Grupo de estudos da Academia Junguiana conduzido por Henrique Barçante (psicólogo, supervisor e professor) e Arthur Bernardes (psicólogo, gestor e criador da Academia Junguiana), parceiros nesse formato de grupo há cerca de quatro anos.",
-      "O grupo já concluiu seus encontros síncronos e todas as 12 horas de gravações estão disponíveis na íntegra para os assinantes da plataforma e também na compra avulsa.",
+      "O grupo já concluiu seus encontros síncronos e todas as 12 horas de gravações estão disponíveis na íntegra para os assinantes da plataforma.",
       "O foco do grupo é o estudo da última década de vida e obra de Carl Jung a partir de um material mais fluido, direto e humano: suas entrevistas e respostas a perguntas de colegas, pacientes e amigos. Diferente da densidade das Obras Completas, esse formato revela um Jung mais descontraído — que faz piadas, ilustra conceitos teóricos com lembranças da própria infância (como o famoso boneco de madeira que ele mesmo entalhou) e compartilha suas experiências subjetivas e seus sonhos.",
       "Ao longo dos encontros, o grupo explorou duas obras construídas a partir dessas entrevistas — cerca de um mês dedicado a cada uma. A primeira delas gira em torno do sentimento, da sombra, da transformação e da redenção.",
     ],
@@ -421,7 +420,7 @@ export const courses = [
     title: "Tipos Psicológicos",
     subtitle: "Volume 6 das Obras Completas de C. G. Jung",
     image: "/midias/gruposcursos/tipospsicologicosgrupo.jpg",
-    link: "https://pay.hotmart.com/F105913936R?off=hfk0dr8m",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "Gravações completas",
@@ -453,7 +452,7 @@ export const courses = [
     title: "Psicopatologia Junguiana",
     subtitle: "Com João de Bragança",
     image: "/midias/gruposcursos/psicopatologiajunguiana.jpg",
-    link: "https://pay.hotmart.com/O107339915L",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Curso",
     format: "Curso",
     duration: "Gravações completas",
@@ -471,7 +470,7 @@ export const courses = [
     title: "Palestras para Ligas Acadêmicas",
     subtitle: "Encontros e workshops temáticos",
     image: "/midias/gruposcursos/palestrasligasacademicas.jpg",
-    link: "https://pay.hotmart.com/D107606395V",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Curso",
     format: "Ciclo de Palestras",
     duration: "Gravações completas",
@@ -481,7 +480,7 @@ export const courses = [
     about: [
       "Uma série de palestras e workshops oferecidos pela Academia Junguiana, voltados para o fomento do conhecimento em Ligas Acadêmicas e grupos organizados por estudantes universitários.",
       "Apresentando os principais conceitos e aplicações da Psicologia Analítica em diálogo com a formação acadêmica, com aulas ministradas pelos coordenadores da Academia Junguiana.",
-      "Todos esses encontros exclusivos ficam reunidos aqui e também estão disponíveis na íntegra para os assinantes da Academia.",
+      "Todos esses encontros exclusivos ficam reunidos aqui e estão disponíveis na íntegra para os assinantes da Academia.",
     ],
   },
   {
@@ -489,7 +488,7 @@ export const courses = [
     title: "Prática da Psicoterapia",
     subtitle: "Volume 16 das Obras Completas de C. G. Jung",
     image: "/midias/gruposcursos/praticadapsicoterapia.jpg",
-    link: "https://pay.hotmart.com/G107778142R?off=f9y2rf4f",
+    link: "https://pay.hotmart.com/E100577277S?off=3op85xl5",
     tag: "Grupo",
     format: "Grupo de Estudos",
     duration: "Novas gravações a cada encontro",

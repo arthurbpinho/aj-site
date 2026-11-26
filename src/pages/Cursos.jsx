@@ -49,9 +49,10 @@ function SubscriptionBanner() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="mt-6 max-w-xl text-lg text-ink-200 leading-relaxed"
           >
-            Com a assinatura você não precisa comprar curso por curso. Cada
-            material listado abaixo está incluído — somando aulas síncronas,
-            grupos de discussão, gravações vitalícias e a comunidade.
+            Trabalhamos exclusivamente no modelo de assinatura, com foco em uma
+            comunidade de estudo e ensino. Cada curso e grupo listado nesta
+            página está incluído — somando aulas síncronas, grupos de discussão,
+            gravações completas, certificados e a comunidade.
           </motion.p>
 
           <ul className="mt-8 grid max-w-md gap-3 text-sm text-ink-200">
@@ -187,8 +188,9 @@ export default function Cursos() {
               Conheça nossos cursos e grupos.
             </h2>
             <p className="mt-3 max-w-2xl text-base text-ink-600 leading-relaxed">
-              Cada um dos cursos abaixo pode ser adquirido individualmente — ou
-              acessado por inteiro com a assinatura da Academia, logo abaixo.
+              Funcionamos exclusivamente por assinatura, com foco em uma
+              comunidade de estudo e ensino. Todos os cursos e grupos abaixo
+              estão integralmente incluídos na assinatura da Academia.
             </p>
           </Reveal>
 
@@ -242,15 +244,16 @@ export default function Cursos() {
           <div className="grid items-center gap-8 rounded-3xl bg-forest-900 px-8 py-12 text-ink-50 md:grid-cols-[1.2fr_1fr] md:px-16 md:py-16">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-gold-400">
-                Vale a pena
+                Comunidade de estudo e ensino
               </p>
               <h3 className="mt-3 font-serif text-3xl md:text-4xl leading-tight">
                 Por R$ 50/mês você acessa tudo isso.
               </h3>
               <p className="mt-4 text-ink-300 leading-relaxed max-w-xl">
-                A assinatura é mais barata do que comprar um único curso avulso —
-                e dá acesso a todos os cursos, grupos e encontros síncronos da
-                Academia.
+                Nosso modelo é exclusivo por assinatura, pensado para construir
+                uma comunidade contínua de estudo e ensino — com acesso a todos
+                os cursos, grupos, gravações, certificados e encontros síncronos
+                da Academia.
               </p>
             </div>
             <div className="md:justify-self-end">
