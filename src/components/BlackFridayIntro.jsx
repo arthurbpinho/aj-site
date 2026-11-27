@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { asset } from "../utils/asset.js";
+import { useBlackFridayStarted } from "../data/promo.js";
 
 // Tela de abertura da página /blackfriday: fundo verde escuro, logo e o nome
 // da campanha. Aparece uma vez por carregamento do site (não repete ao navegar
@@ -9,6 +10,7 @@ const DURATION_MS = 1300;
 let shown = false;
 
 export default function BlackFridayIntro() {
+  const isOfficialBf = useBlackFridayStarted();
   const [visible, setVisible] = useState(() => !shown);
 
   useEffect(() => {
@@ -58,7 +60,9 @@ export default function BlackFridayIntro() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-6 font-serif text-4xl font-bold uppercase tracking-[0.06em] sm:text-5xl"
             >
-              <span className="bf-gold-text">Black November</span>
+              <span className="bf-gold-text">
+                {isOfficialBf ? "Black Friday" : "Black November"}
+              </span>
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -66,7 +70,9 @@ export default function BlackFridayIntro() {
               transition={{ duration: 0.5, delay: 0.35 }}
               className="mt-2 text-xs uppercase tracking-[0.35em] text-ink-200 sm:text-sm"
             >
-              da Academia Junguiana
+              {isOfficialBf
+                ? "O maior desconto da história da Academia Junguiana"
+                : "da Academia Junguiana"}
             </motion.p>
             <motion.div
               aria-hidden

@@ -17,7 +17,11 @@ import {
 } from "lucide-react";
 import { asset } from "../utils/asset.js";
 import BlackFridayCountdown from "../components/BlackFridayCountdown.jsx";
-import { BLACK_FRIDAY_COUPON } from "../data/promo.js";
+import {
+  BLACK_FRIDAY_COUPON,
+  BLACK_FRIDAY_OFFICIAL_COUPON,
+  useBlackFridayStarted,
+} from "../data/promo.js";
 
 function InstagramIcon({ size = 20 }) {
   return (
@@ -168,6 +172,10 @@ function Modal({ open, onClose, children, title }) {
 
 export default function BioinstaBf() {
   const [podcastOpen, setPodcastOpen] = useState(false);
+  const started = useBlackFridayStarted();
+  const activeCoupon = started
+    ? BLACK_FRIDAY_OFFICIAL_COUPON
+    : BLACK_FRIDAY_COUPON;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-forest-950 text-ink-50">
@@ -197,7 +205,9 @@ export default function BioinstaBf() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
             </span>
-            Esquenta Black Friday
+            {started
+              ? "Black Friday · Maior desconto da história"
+              : "Esquenta Black Friday"}
           </p>
 
           <h1 className="mt-3 font-serif text-3xl leading-tight text-ink-50">
@@ -220,21 +230,23 @@ export default function BioinstaBf() {
             <span className="flex items-center justify-between gap-2">
               <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[0.26em] bf-gold-text">
                 <Sparkles size={13} className="text-gold-400" />
-                BLACK NOVEMBER
+                {started ? "BLACK FRIDAY OFICIAL" : "BLACK NOVEMBER"}
               </span>
               <span className="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-2.5 py-0.5 font-sans text-[10px] font-extrabold uppercase tracking-[0.15em] text-ink-950">
-                Até 20% OFF
+                {started ? "Até 30% OFF" : "Até 20% OFF"}
               </span>
             </span>
             <span className="mt-1 font-serif text-xl leading-snug text-ink-50">
               Aproveite o cupom{" "}
               <span className="font-mono text-base font-bold text-gold-400">
-                {BLACK_FRIDAY_COUPON}
+                {activeCoupon}
               </span>{" "}
               para assinar a Academia Junguiana
             </span>
             <span className="text-sm text-ink-300">
-              Acesso completo aos nossos grupos e cursos.
+              {started
+                ? "O maior desconto de todos os tempos da Academia — acesso completo aos nossos grupos e cursos."
+                : "Acesso completo aos nossos grupos e cursos."}
             </span>
             <span className="mt-3 inline-flex items-center gap-1.5 self-start rounded-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-ink-950 shadow-[0_8px_22px_-6px_rgba(214,179,101,0.8)] transition group-hover:brightness-110">
               Assinar agora <ArrowRight size={14} />

@@ -24,12 +24,18 @@ import Reveal from "../components/Reveal.jsx";
 import TrilhaBanner from "../components/TrilhaBanner.jsx";
 import { posts } from "../data/posts.js";
 import { coordinatorList } from "../data/coordinators.js";
-import { BLACK_FRIDAY_COUPON } from "../data/promo.js";
+import {
+  BLACK_FRIDAY_COUPON,
+  BLACK_FRIDAY_OFFICIAL_COUPON,
+  useBlackFridayStarted,
+} from "../data/promo.js";
 
 const PLAN_MONTHLY = "https://pay.hotmart.com/E100577277S?off=3op85xl5";
 const PLAN_ANNUAL = "https://pay.hotmart.com/E100577277S?off=e2lx8j1u";
-const YOUTUBE_VIDEO_ID = "kcBU78cZqfk";
-const VIDEO_TITLE = "Black November - Academia Junguiana - 2026";
+const YOUTUBE_VIDEO_ID_BN = "kcBU78cZqfk";
+const VIDEO_TITLE_BN = "Black November - Academia Junguiana - 2026";
+const YOUTUBE_VIDEO_ID_BF = "5tCAn7-OpGw";
+const VIDEO_TITLE_BF = "Black Friday - Academia Junguiana - 2026";
 
 function SectionTitle({ eyebrow, title, subtitle, align = "left" }) {
   const a = align === "center" ? "text-center mx-auto" : "text-left";
@@ -55,7 +61,7 @@ function SectionTitle({ eyebrow, title, subtitle, align = "left" }) {
 const TITLE_SIZE =
   "text-[clamp(3.4rem,15vw,7rem)] lg:text-[5.25rem] xl:text-[6.5rem]";
 
-function OffSticker({ className = "" }) {
+function OffSticker({ maxOff = "20%", className = "" }) {
   return (
     <span
       className={`relative inline-grid h-[4.5rem] w-[4.5rem] shrink-0 rotate-12 place-items-center rounded-full bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-center font-sans text-ink-950 shadow-[0_10px_30px_-8px_rgba(200,156,68,0.8)] ring-2 ring-ink-950/40 ring-offset-2 ring-offset-forest-950 sm:h-24 sm:w-24 ${className}`}
@@ -65,7 +71,7 @@ function OffSticker({ className = "" }) {
           até
         </span>
         <span className="block text-2xl font-extrabold tracking-tight sm:text-[2rem]">
-          20%
+          {maxOff}
         </span>
         <span className="block text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs">
           off
@@ -85,7 +91,7 @@ function PriceTeaser({ label, from, to }) {
   );
 }
 
-function Hero() {
+function Hero({ started }) {
   return (
     <section className="relative overflow-hidden bg-forest-950 text-ink-50">
       <div
@@ -101,7 +107,7 @@ function Hero() {
         aria-hidden
         className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 select-none font-serif text-[22rem] font-bold leading-none text-ink-50/[0.025] lg:block"
       >
-        BN
+        {started ? "BF" : "BN"}
       </span>
 
       <div className="container-wide relative grid gap-12 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-14 lg:py-24">
@@ -116,7 +122,9 @@ function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
             </span>
-            Esquenta Black Friday
+            {started
+              ? "O maior desconto de todos os tempos"
+              : "Esquenta Black Friday"}
           </motion.p>
 
           <motion.h1
@@ -124,7 +132,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 font-serif font-bold uppercase"
-            aria-label="Black November"
+            aria-label={started ? "Black Friday" : "Black November"}
           >
             <span className="flex items-center gap-4 sm:gap-6">
               <span
@@ -132,12 +140,12 @@ function Hero() {
               >
                 Black
               </span>
-              <OffSticker />
+              <OffSticker maxOff={started ? "30%" : "20%"} />
             </span>
             <span
               className={`bf-gold-text block ${TITLE_SIZE} leading-[0.95] tracking-[0.02em] drop-shadow-[0_6px_30px_rgba(200,156,68,0.35)]`}
             >
-              November
+              {started ? "Friday" : "November"}
             </span>
           </motion.h1>
           <div
@@ -145,16 +153,46 @@ function Hero() {
             className="mt-4 h-px w-40 bg-gradient-to-r from-gold-500 to-transparent sm:w-64"
           />
 
+          {started && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.12 }}
+              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500/20 via-gold-400/15 to-transparent px-4 py-2.5 text-xs sm:text-sm font-semibold text-gold-300 ring-1 ring-gold-500/40"
+            >
+              <Sparkles size={16} className="shrink-0 text-gold-400" />
+              <span>
+                O maior desconto da história da Academia Junguiana — o maior já
+                visto até hoje.
+              </span>
+            </motion.div>
+          )}
+
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             className="mt-6 max-w-xl text-base text-ink-200 leading-relaxed sm:text-lg"
           >
-            O esquenta da Black Friday da Academia Junguiana começou. Assine com
-            desconto e tenha acesso a todos os cursos, grupos e à nossa
-            comunidade — uma formação séria e acessível em Psicologia
-            Junguiana, diretamente da sua casa.
+            {started ? (
+              <>
+                A <strong className="text-ink-50">Black Friday oficial</strong>{" "}
+                da Academia Junguiana chegou com{" "}
+                <strong className="text-gold-400">
+                  o maior desconto de todos os tempos
+                </strong>
+                . Assine pelo menor valor já visto até hoje e tenha acesso a
+                todos os cursos, grupos e à nossa comunidade de estudo e ensino
+                em Psicologia Junguiana.
+              </>
+            ) : (
+              <>
+                O esquenta da Black Friday da Academia Junguiana começou. Assine
+                com desconto e tenha acesso a todos os cursos, grupos e à nossa
+                comunidade — uma formação séria e acessível em Psicologia
+                Junguiana, diretamente da sua casa.
+              </>
+            )}
           </motion.p>
 
           <motion.div
@@ -163,8 +201,16 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 flex flex-wrap gap-2"
           >
-            <PriceTeaser label="Mensal" from="R$ 50" to="R$ 44,90" />
-            <PriceTeaser label="Anual" from="R$ 500" to="R$ 399,90" />
+            <PriceTeaser
+              label="Mensal"
+              from="R$ 50"
+              to={started ? "R$ 39,90" : "R$ 44,90"}
+            />
+            <PriceTeaser
+              label="Anual"
+              from="R$ 500"
+              to={started ? "R$ 349,90" : "R$ 399,90"}
+            />
           </motion.div>
 
           <motion.div
@@ -210,7 +256,10 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="relative"
         >
-          <VideoCTA />
+          <VideoCTA
+            key={started ? "bf" : "bn"}
+            started={started}
+          />
         </motion.div>
       </div>
     </section>
@@ -220,13 +269,15 @@ function Hero() {
 // Miniaturas do YouTube: a HD (maxresdefault) pode ainda não existir em vídeos
 // recentes — nesse caso o YouTube devolve um placeholder cinza de 120×90 sem
 // disparar erro no <img>. Detectamos pelo tamanho e caímos para a hqdefault.
-const THUMB_HD = `https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
-const THUMB_FALLBACK = `https://i.ytimg.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`;
+function VideoCTA({ started }) {
+  const videoId = started ? YOUTUBE_VIDEO_ID_BF : YOUTUBE_VIDEO_ID_BN;
+  const videoTitle = started ? VIDEO_TITLE_BF : VIDEO_TITLE_BN;
+  const thumbHd = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+  const thumbFallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
-function VideoCTA() {
   const [playing, setPlaying] = useState(false);
-  const [thumb, setThumb] = useState(THUMB_HD);
-  const fallback = () => setThumb((t) => (t === THUMB_HD ? THUMB_FALLBACK : t));
+  const [thumb, setThumb] = useState(thumbHd);
+  const fallback = () => setThumb((t) => (t === thumbHd ? thumbFallback : t));
 
   return (
     <div className="relative">
@@ -239,8 +290,8 @@ function VideoCTA() {
           {playing ? (
             <iframe
               className="absolute inset-0 h-full w-full"
-              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-              title={VIDEO_TITLE}
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+              title={videoTitle}
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
@@ -250,7 +301,7 @@ function VideoCTA() {
               type="button"
               onClick={() => setPlaying(true)}
               className="group absolute inset-0 grid place-items-center overflow-hidden"
-              aria-label={`Reproduzir vídeo: ${VIDEO_TITLE}`}
+              aria-label={`Reproduzir vídeo: ${videoTitle}`}
             >
               <img
                 src={thumb}
@@ -265,7 +316,8 @@ function VideoCTA() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/25 transition duration-500 group-hover:from-black/60" />
 
               <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gold-400 ring-1 ring-gold-500/40 backdrop-blur sm:left-5 sm:top-5">
-                <Sparkles size={11} /> Black November
+                <Sparkles size={11} />{" "}
+                {started ? "Black Friday" : "Black November"}
               </span>
 
               {/* A arte da miniatura tem conteúdo no centro: o play fica embaixo. */}
@@ -278,7 +330,9 @@ function VideoCTA() {
                     Assistir ao vídeo
                   </span>
                   <span className="mt-0.5 block font-serif text-base leading-tight text-ink-50 sm:text-xl">
-                    Black November · Academia Junguiana
+                    {started
+                      ? "Black Friday · Academia Junguiana"
+                      : "Black November · Academia Junguiana"}
                   </span>
                 </span>
               </span>
@@ -291,13 +345,21 @@ function VideoCTA() {
 }
 
 // Faixa rolante entre o hero e os planos.
-function Ticker() {
-  const items = [
-    "Black November",
-    "Até 20% off na assinatura",
-    `Cupom ${BLACK_FRIDAY_COUPON}`,
-    "Esquenta Black Friday",
-  ];
+function Ticker({ started, coupon }) {
+  const items = started
+    ? [
+        "Black Friday Oficial",
+        "O maior desconto de todos os tempos",
+        "Até 30% off na assinatura",
+        `Cupom ${coupon}`,
+        "O maior desconto já visto até hoje",
+      ]
+    : [
+        "Black November",
+        "Até 20% off na assinatura",
+        `Cupom ${coupon}`,
+        "Esquenta Black Friday",
+      ];
   const half = [...items, ...items];
   return (
     <div
@@ -319,11 +381,11 @@ function Ticker() {
   );
 }
 
-function CouponBox() {
+function CouponBox({ coupon }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(BLACK_FRIDAY_COUPON);
+      await navigator.clipboard.writeText(coupon);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -340,9 +402,9 @@ function CouponBox() {
         type="button"
         onClick={copy}
         className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-4 py-1.5 font-mono text-sm font-bold tracking-wider text-ink-950 transition hover:brightness-110"
-        aria-label={`Copiar cupom ${BLACK_FRIDAY_COUPON}`}
+        aria-label={`Copiar cupom ${coupon}`}
       >
-        {BLACK_FRIDAY_COUPON}
+        {coupon}
         {copied ? <Check size={14} strokeWidth={3} /> : <Copy size={14} />}
       </button>
       <span className="text-xs text-ink-400" aria-live="polite">
@@ -352,7 +414,7 @@ function CouponBox() {
   );
 }
 
-function Plans() {
+function Plans({ started, coupon }) {
   return (
     <section id="planos" className="relative scroll-mt-48 bg-forest-900 text-ink-50">
       <div
@@ -366,30 +428,59 @@ function Plans() {
       <div className="container-wide relative py-16 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold-400">
-            Assinatura
+            {started
+              ? "Assinatura · O maior desconto já visto até hoje"
+              : "Assinatura"}
           </p>
           <h2 className="font-serif text-[2rem] leading-tight sm:text-4xl md:text-5xl">
-            Aproveite o desconto do{" "}
-            <span className="bf-gold-text font-bold">Black November</span> para
-            acessar todos os nossos conteúdos por um valor promocional.
+            {started ? (
+              <>
+                Aproveite a{" "}
+                <span className="bf-gold-text font-bold">Black Friday</span> com
+                o maior desconto de todos os tempos da Academia Junguiana.
+              </>
+            ) : (
+              <>
+                Aproveite o desconto do{" "}
+                <span className="bf-gold-text font-bold">Black November</span>{" "}
+                para acessar todos os nossos conteúdos por um valor promocional.
+              </>
+            )}
           </h2>
           <p className="mt-5 text-ink-300 leading-relaxed">
-            Funcionamos exclusivamente no modelo de assinatura, com foco em uma
-            comunidade de estudo e ensino. A assinatura libera todos os nossos
-            cursos, grupos de estudo, aulas síncronas, gravações e certificados.
+            {started ? (
+              <>
+                Este é o{" "}
+                <strong className="text-gold-400">
+                  maior desconto de todos os tempos da Academia Junguiana — o
+                  maior já visto até hoje
+                </strong>
+                . Funcionamos exclusivamente no modelo de assinatura, com foco
+                em uma comunidade de estudo e ensino: a assinatura libera todos
+                os nossos cursos, grupos de estudo, aulas síncronas, gravações e
+                certificados.
+              </>
+            ) : (
+              <>
+                Funcionamos exclusivamente no modelo de assinatura, com foco em
+                uma comunidade de estudo e ensino. A assinatura libera todos os
+                nossos cursos, grupos de estudo, aulas síncronas, gravações e
+                certificados.
+              </>
+            )}
           </p>
         </div>
 
-        <CouponBox />
+        <CouponBox coupon={coupon} />
 
         <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2 md:items-stretch md:gap-10">
           <PlanCard
             badge="Plano Mensal"
-            off="-10%"
+            off={started ? "-20%" : "-10%"}
             originalPrice="R$ 50"
-            price="R$ 44,90"
+            price={started ? "R$ 39,90" : "R$ 44,90"}
             period="/mês"
-            highlight={`Com o cupom ${BLACK_FRIDAY_COUPON}`}
+            highlight={`Com o cupom ${coupon}`}
             description="Acesso completo enquanto a assinatura estiver ativa. Renovação automática até o cancelamento."
             features={[
               "Todos os cursos e grupos",
@@ -403,16 +494,22 @@ function Plans() {
           <PlanCard
             featured
             badge="Plano Anual"
-            off="-20%"
+            off={started ? "-30%" : "-20%"}
             originalPrice="R$ 500"
-            price="R$ 399,90"
+            price={started ? "R$ 349,90" : "R$ 399,90"}
             period="/ano"
-            monthlyEquivalent="R$ 33,33/mês"
-            highlight={`Com o cupom ${BLACK_FRIDAY_COUPON}`}
+            monthlyEquivalent={started ? "R$ 29,16/mês" : "R$ 33,33/mês"}
+            highlight={
+              started
+                ? `Com o cupom ${coupon} · Maior desconto da história`
+                : `Com o cupom ${coupon}`
+            }
             description="Parcele em até 9x conforme as condições de parcelamento. Renovação automática até o cancelamento."
             features={[
               "Tudo do plano mensal",
-              "R$ 399,90 à vista com o cupom",
+              started
+                ? "R$ 349,90 à vista com o cupom (menor valor já visto)"
+                : "R$ 399,90 à vista com o cupom",
               "Ou em até 9x, conforme condições de parcelamento",
               "Compromisso com o estudo de longo prazo",
             ]}
@@ -929,6 +1026,11 @@ function FeaturedLives() {
 }
 
 export default function BlackFriday() {
+  const started = useBlackFridayStarted();
+  const activeCoupon = started
+    ? BLACK_FRIDAY_OFFICIAL_COUPON
+    : BLACK_FRIDAY_COUPON;
+
   useEffect(() => {
     if (window.location.hash === "#planos") {
       const el = document.getElementById("planos");
@@ -938,9 +1040,9 @@ export default function BlackFriday() {
 
   return (
     <div className="bg-forest-950 text-ink-50">
-      <Hero />
-      <Ticker />
-      <Plans />
+      <Hero started={started} />
+      <Ticker started={started} coupon={activeCoupon} />
+      <Plans started={started} coupon={activeCoupon} />
       <Pillars />
       <HowItWorks />
       <section className="container-wide pb-20">

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { BLACK_FRIDAY_START } from "../data/promo.js";
+import {
+  BLACK_FRIDAY_START,
+  BLACK_FRIDAY_OFFICIAL_COUPON,
+} from "../data/promo.js";
 
 function timeLeft() {
   const diff = Math.max(0, BLACK_FRIDAY_START.getTime() - Date.now());
@@ -55,8 +58,14 @@ export default function BlackFridayCountdown() {
       />
       <div className="container-wide flex flex-col items-center justify-center gap-2 py-2 sm:py-2.5 md:flex-row md:gap-8">
         {t.done ? (
-          <p className="bf-gold-text py-1 text-center text-sm font-semibold uppercase tracking-[0.25em]">
-            A Black Friday da Academia Junguiana começou!
+          <p className="py-1 text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-ink-100">
+            <span className="bf-gold-text font-extrabold">
+              Black Friday no ar:
+            </span>{" "}
+            o maior desconto de todos os tempos da Academia · Cupom{" "}
+            <span className="rounded bg-gold-500/20 px-2 py-0.5 font-mono text-gold-400 ring-1 ring-gold-500/40">
+              {BLACK_FRIDAY_OFFICIAL_COUPON}
+            </span>
           </p>
         ) : (
           <>
