@@ -16,6 +16,10 @@ const SITE_URL = "https://academiajunguiana.com";
 // uma imagem própria mais específica.
 const DEFAULT_IMAGE = `${SITE_URL}/midias/logos/logoverdeescura.png`;
 
+// Imagem de divulgação da Black Friday (1200x630), usada no preview da home
+// (index.html) e da rota /blackfriday.
+const BLACKFRIDAY_IMAGE = `${SITE_URL}/midias/blackfridaypreview.jpg`;
+
 // Crawlers (WhatsApp/Facebook) não renderizam AVIF; quando a imagem original
 // for .avif, apontamos para a versão .jpg gerada no build (mesmo nome).
 const ogImage = (img) => `${SITE_URL}${img.replace(/\.avif$/i, ".jpg")}`;
@@ -63,7 +67,7 @@ const ROUTE_META = {
     title: "Black November — Academia Junguiana",
     description:
       "Esquenta Black Friday da Academia Junguiana: assinatura com desconto para acessar todos os cursos, grupos e a comunidade.",
-    image: DEFAULT_IMAGE,
+    image: BLACKFRIDAY_IMAGE,
     type: "website",
   },
   bioinsta: {
